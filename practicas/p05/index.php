@@ -159,6 +159,48 @@
         unset($a);
         unset($b);
         unset($c);
+
+        //EJERCICIO 6------------------------------------------------------------------------------
+        echo '<h2>Ejercicio 6</h2><p>Dar y comprobar el valor booleano de las variables $a, $b, $c, $d, $e y $f y muéstralas
+        usando la función var_dump(<datos>).</p>';
+
+        $a = "0";
+        echo 'Variable $a con var_dump = ';
+        var_dump($a);
+        echo "<br>";
+
+        $b = "TRUE";
+        echo 'Variable $b con var_dump = ';
+        var_dump($b);
+        echo "<br>";
+
+        $c = FALSE;
+        echo 'Variable $c con var_dump = ';
+        var_dump($c);
+        echo "<br>";
+
+        $d = ($a OR $b);
+        echo 'Variable $d con var_dump = ';
+        var_dump($d);
+        echo "<br>";
+
+        $e = ($a AND $c);
+        echo 'Variable $e con var_dump = ';
+        var_dump($e);
+        echo "<br>";
+
+        $f = ($a XOR $b);
+        echo 'Variable $f con var_dump = ';
+        var_dump($f);
+        echo "<br>";
+
+        echo '<p>Después investiga una función de PHP que permita transformar el valor booleano de $c y $e 
+        en uno que se pueda mostrar con un echo:</p>';
+        settype($c, "string");
+        settype($e, "string");
+        echo "El valor en falso genera una cadena vacia, mientras el valor verdadero una cadena con un 1.<br>";
+        echo 'El valor con echo de $c es : '.$c."<br>";
+        echo 'El valor con echo de $e es : '.$e."<br>";
         ?>
     </body>
 </html>
