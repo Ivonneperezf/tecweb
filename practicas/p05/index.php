@@ -34,6 +34,39 @@
         unset($_element1);
         
         
+        //EJERCICIO 2------------------------------------------------------------------------------
+        echo "<h2>Ejercicio 2</h2><p>Asignaciones de valores a variables:</p>";
+
+        $a = "ManejadorSQL";
+        $b = 'MySQL';
+        $c = &$a;
+        
+        echo "<i>Muestra de primeras asignaciones:</i><br>";
+        echo '$a = '."$a"."<br>";
+        echo '$b = '."$b"."<br>";
+        echo '$c = '."$c"."<br><br>";
+
+        $a = "PHP server";
+        $b = &$a;
+        echo "<i>Muestra de segundas asignaciones:</i><br>";
+        echo '$a = '."$a"."<br>";
+        echo '$b = '."$b"."<br>";
+        echo '$c = '."$c"."<br><br>";
+
+        echo "<i>Describe y muestra en la página obtenida qué ocurrió en el segundo 
+        bloque de asignaciones</i><br>";
+        echo '<p><i>PRIMERAS ASIGNACIONES</i><br>Se definen los valores de las variables a, b, c, donde 
+        dado que no hay variables o caracteres especiales, no hace ninguna diferencia el uso de comillas
+        dobles ("") o el uso de comillas simples'." ('')".", esto para los casos de las variables a y b, sin embargo,
+        a la variable c se le asigna el contenido de la variable a, por lo que su salida es la misma en la variable a y c.</p>";
+
+        echo "<p><i>SEGUNDAS ASIGNACIONES</i><br>En este caso se actualiza el valor de la variable a, y ahora 
+        a la variable b se le asigna el contenido de la variable a, por lo que ahora tanto a como b apuntan a a,
+         por lo tanto la salida es a misma en todas las variables.</p>";
+        
+        unset($a);
+        unset($b);
+        unset($c);
         ?>
     </body>
 </html>
