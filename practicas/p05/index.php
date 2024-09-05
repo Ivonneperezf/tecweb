@@ -109,6 +109,42 @@
         echo"</li><br>";
 
         echo"</ul>";
+
+        unset($a);
+        unset($b);
+        unset($c);
+        unset($z);
+
+        //EJERCICIO 4------------------------------------------------------------------------------
+        echo '<h2>Ejercicio 4</h2><p>Lee y muestra los valores de las variables del ejercicio anterior,
+         pero ahora con la ayuda de la matriz $GLOBALS o del modificador global de PHP.</p>';
+        
+        $a = "PHP5";
+        $z[] = &$a;
+        $b = "5a version de PHP";
+        $c = $b*10;
+        $a .= $b;
+        $b *= $c;
+        $z[0] = "MySQL";
+        function val_variables(){
+            echo "Variable a = ";
+            print_r($GLOBALS['a']);
+            echo "<br>";
+            echo "Variable b = ";
+            print_r($GLOBALS['b']);
+            echo "<br>";
+            echo "Variable c = ";
+            print_r($GLOBALS['c']);
+            echo "<br>";
+            echo "Variable z = ";
+            print_r($GLOBALS['z']);
+            echo "<br>";
+        }
+        val_variables();
+        unset($a);
+        unset($b);
+        unset($c);
+        unset($z);
         ?>
     </body>
 </html>
