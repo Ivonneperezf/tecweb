@@ -67,6 +67,48 @@
         unset($a);
         unset($b);
         unset($c);
+
+
+        //EJERCICIO 3------------------------------------------------------------------------------
+        echo "<h2>Ejercicio 3</h2><p>Muestra el contenido de cada variable inmediatamente después de cada asignación, 
+        verificar la evolución del tipo de estas variables (imprime todos los componentes de los arreglo):</p><ul>";
+
+        $a = "PHP5";
+        echo '<li>$a = "PHP5".<br>Salida: ';
+        var_dump($a);
+        echo"</li><br>";
+
+        $z[] = &$a;
+        echo '<li>$z[] = &$a.<br>Salida: ';
+        var_dump($z);
+        echo"</li><br>";
+
+        $b = "5a version de PHP";
+        echo '<li>$b = "5a version de PHP".<br>Salida: ';
+        var_dump($b);
+        echo"</li><br>";
+
+        $c = $b*10;
+        echo '<li>$c = $b*10.<br>Salida: ';
+        var_dump($c);
+        echo"</li><br>";
+
+        $a .= $b;
+        echo '<li>$a .= $b.<br>Salida: ';
+        var_dump($a);
+        echo"</li><br>";
+
+        $b *= $c;
+        echo '<li>$b *= $c.<br>Salida: ';
+        var_dump($b);
+        echo"</li><br>";
+
+        $z[0] = "MySQL";
+        echo '<li>$z[0] = "MySQL".<br>Salida: ';
+        var_dump($z);
+        echo"</li><br>";
+
+        echo"</ul>";
         ?>
     </body>
 </html>
