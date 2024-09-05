@@ -145,6 +145,20 @@
         unset($b);
         unset($c);
         unset($z);
+
+        //EJERCICIO 5------------------------------------------------------------------------------
+        echo '<h2>Ejercicio 5</h2><p>Dar el valor de las variables $a, $b, $c al final del siguiente script:</p>';
+        $a = "7 personas";
+        echo '$a = '."$a<br>";
+        $b = (integer) $a;
+        echo '$b = '."$b<br>";
+        $a = "9E3";
+        echo '$a = '."$a<br>";
+        $c = (double) $a;
+        echo '$c = '."$c<br>";
+        unset($a);
+        unset($b);
+        unset($c);
         ?>
     </body>
 </html>
