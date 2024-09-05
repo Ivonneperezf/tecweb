@@ -201,6 +201,23 @@
         echo "El valor en falso genera una cadena vacia, mientras el valor verdadero una cadena con un 1.<br>";
         echo 'El valor con echo de $c es : '.$c."<br>";
         echo 'El valor con echo de $e es : '.$e."<br>";
+        unset($a);
+        unset($b);
+        unset($c);
+        unset($d);
+        unset($e);
+        unset($f);
+
+        //EJERCICIO 7------------------------------------------------------------------------------
+        echo '<h2>Ejercicio 7</h2><p>Usando la variable predefinida $_SERVER, determina lo siguiente:.</p>';
+        echo '<ol type="a">
+            <li>La versión de Apache y PHP.</li>
+            <li>El nombre del sistema operativo (servidor).</li>
+            <li>El idioma del navegador (cliente).</li>
+            </ol>';
+        echo "Version de Apache y PHP: ".$_SERVER['SERVER_SOFTWARE']."<br>";
+        echo "Nombre del sistema operativo del servidor: ".$_SERVER['SERVER_NAME']. "<br>";
+        echo "Idioma del navegador: ".$_SERVER['HTTP_ACCEPT_LANGUAGE']."<br>";
         ?>
     </body>
 </html>
