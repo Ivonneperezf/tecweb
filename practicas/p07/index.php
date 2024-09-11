@@ -18,6 +18,18 @@
     echo "<p>Crea un programa para la generación repetitiva de 3 números aleatorios hasta obtener una secuencia 
         compuesta por: <i>impar, par, impar</i></p>";
         matrizAleatoria();
+    
+    echo "<h2>Ejercicio 3</h2>";
+    echo "<p>Utiliza un ciclo while para encontrar el primer número entero obtenido aleatoriamente, 
+    pero que además sea múltiplo de un número dado.</p>
+    <ul>
+    <li>Crear una variante de este script utilizando el ciclo <i>do-while</i>.</li>
+    <li>El número dado se debe obtener vía GET.</li></ul>";
+    echo "<h4>Utilizando <i>while</i></h4>";
+        numeroAleatorioWhile($_GET['valor']);
+    echo "<h4>Utilizando <i>do-while</i></h4>";
+        numeroAleatorioWhile($_GET['valor']);
+    
     ?>
     
 </body>

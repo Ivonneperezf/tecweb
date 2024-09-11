@@ -27,9 +27,30 @@
             $numeros += 3;
             echo $array[0] . ", " . $array[1] . ", " . $array[2] . "<br>";
         }
-        #foreach ($array as $ar) {
-        #    echo $ar . " ";
-        #}
         echo '<br>' . $numeros . ' números obtenidos en ' . $iteraciones . ' iteraciones<br>';
-    }    
+    }   
+    
+    function numeroAleatorioWhile($num){
+        if ($num <= 0) {
+            echo "Por favor ingresa un número válido mayor que 0.<br>";
+        }else{
+            $aleatorio = rand();
+            while($aleatorio % $num != 0){
+                $aleatorio = rand();
+            }
+            echo "Número aleatorio divisible por $num: $aleatorio";
+        }
+    }
+
+    function numeroAleatorioDoWhile($num) {
+        if ($num <= 0) {
+            echo "Por favor ingresa un número válido mayor que 0.<br>";
+        }else{
+            do {
+                $aleatorio = rand();
+            } while ($aleatorio % $num != 0);
+            echo "Número aleatorio divisible por $num: $aleatorio";
+        }
+    }
+    
 ?>
