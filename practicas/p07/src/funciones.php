@@ -13,5 +13,23 @@
         }
     }
 
-    
+    function matrizAleatoria() {
+        $iteraciones = 1;
+        $numeros = 3;
+        $array = [rand(100, 999), rand(100, 999), rand(100, 999)];
+        echo $array[0] . ", " . $array[1] . ", " . $array[2] . "<br>";
+        while (!($array[0] % 2 != 0 && $array[1] % 2 == 0 && $array[2] % 2 != 0)) {
+            $array = [
+                rand(100, 999),
+                rand(100, 999),
+                rand(100, 999)];
+            $iteraciones++;
+            $numeros += 3;
+            echo $array[0] . ", " . $array[1] . ", " . $array[2] . "<br>";
+        }
+        #foreach ($array as $ar) {
+        #    echo $ar . " ";
+        #}
+        echo '<br>' . $numeros . ' números obtenidos en ' . $iteraciones . ' iteraciones<br>';
+    }    
 ?>
