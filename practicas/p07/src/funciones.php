@@ -38,7 +38,7 @@
             while($aleatorio % $num != 0){
                 $aleatorio = rand();
             }
-            echo "Número aleatorio divisible por $num: $aleatorio";
+            echo "Número aleatorio divisible por $num: $aleatorio"."<br>";
         }
     }
 
@@ -49,8 +49,15 @@
             do {
                 $aleatorio = rand();
             } while ($aleatorio % $num != 0);
-            echo "Número aleatorio divisible por $num: $aleatorio";
+            echo "Número aleatorio divisible por $num: $aleatorio"."<br>";
         }
     }
     
+
+    function arregloLetras(){
+        for ($i = 97; $i <= 122; $i++){
+            $arr[$i] = chr($i);
+        }
+        return $arr;
+    }
 ?>

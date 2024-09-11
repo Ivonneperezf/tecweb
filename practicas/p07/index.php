@@ -29,7 +29,37 @@
         numeroAleatorioWhile($_GET['valor']);
     echo "<h4>Utilizando <i>do-while</i></h4>";
         numeroAleatorioWhile($_GET['valor']);
+
+
+    echo "<h2>Ejercicio 4</h2>";
+    echo "<p>Crear un arreglo cuyos <i>índices</i> van de 97 a 122 y cuyos <i>valores</i> son las letras de la 'a'
+    a la 'z'. Usa la función <i>chr(n)</i> que devuelve el caracter cuyo código ASCII es n para poner
+    el valor en cada índice. Es decir:</p>";
+    echo '<ul>[97] => a<br>
+            [98] => b<br>
+            [99] => c<br>
+            ...<br>
+            [122] => z<br></ul>
+            <ul>✓ Crea el arreglo con un ciclo for<br>
+            ✓ Lee el arreglo y crea una tabla en XHTML con <i>echo</i> y un ciclo <i>foreach</i><br></ul>
+            <pre>foreach ($arreglo as $key => $value) {
+    # code...
+}</pre>';
+    echo '<table border="4">
+    <tr>
+        <th>Código ASCII</th>
+        <th>Letra</th>
+    </tr>';
+
+    $arreglo = arregloLetras();
+    foreach ($arreglo as $key => $value) {
+        echo "<tr>";
+        echo "<td>$key</td>";
+        echo "<td>$value</td>";
+        echo "</tr>";
+    }
     
+    echo '</table>';
     ?>
     
 </body>
