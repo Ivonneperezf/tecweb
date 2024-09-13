@@ -80,5 +80,19 @@
         </form>
     </fieldset>
     
+
+    <h2>Ejercicio 6</h2>
+    <p>Formulario consulta de automovil</p>
+    <fieldset>
+        <legend>Ingrese los datos del automovil</legend>
+        <form action="http://localhost/tecweb/practicas/p07/respuestaEj6.php" method="POST">
+            Matricula: 
+            <input type="text" name="matricula"><br><br>
+            <input type="submit" name="pormatricula" value="Enviar">
+            <input type="hidden" name="listarVehiculos" value="true">
+            <input type="submit" value="listar">
+        </form>
+    </fieldset>
+
 </body>
 </html>
