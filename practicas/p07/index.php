@@ -61,6 +61,24 @@
     
     echo '</table>';
     ?>
+
+<h2>Ejercicio 5</h2>
+    <p>Formulario de Edad y Sexo</p>
+    <fieldset>
+        <legend>Ingrese su edad y sexo</legend>
+        <form action="http://localhost/tecweb/practicas/p07/respuesta.php" method="POST">
+            Edad: <input type="number" name="edad">
+            <br><br>
+            Sexo: 
+            <select id="sexo" name="sexo">
+                <option value="masculino">Masculino</option>
+                <option value="femenino" selected>Femenino </option>
+                <option value="otro">Otro</option>
+            </select>
+            <br><br>
+            <button type="submit">Enviar</button>
+        </form>
+    </fieldset>
     
 </body>
 </html>
