@@ -18,7 +18,7 @@
         if (!move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen)) {
             die('<h1>Error al subir la imagen</h1>');
         }
-        $eliminado = 0;
+        //$eliminado = 0;
 
         /** SE CREA EL OBJETO DE CONEXION */
         @$link = new mysqli('localhost', 'root', 'Mivida243@.', 'marketzone');
@@ -38,7 +38,9 @@
             echo '<h1>Error: El producto ya existe en la base de datos.</h1></body>';
         } else {
             // Si no existe, insertar el producto
-            $sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}','{$eliminado}')";
+            //$sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}','{$eliminado}')";
+            $sql = "INSERT INTO table_name (nombre, marca, modelo, precio, detalles, unidades, imagen)
+            VALUES ('{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}')";
 
             if ($link->query($sql)) {
                 // Éxito, mostrar resumen del producto insertado
