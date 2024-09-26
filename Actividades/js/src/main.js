@@ -52,3 +52,14 @@ function proEstructurada(){
     document.write('El producto es ');
     document.write(producto);
 }
+
+
+function sentenciaIf(){
+    var nombre;
+    var nota;
+    nombre = prompt('Ingresa tu nombre:', '');
+    nota = prompt('Ingresa tu nota:', '');
+    if (nota>=4) {
+        document.write(nombre+' esta aprobado con un '+nota);
+    }
+}
