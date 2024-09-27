@@ -191,12 +191,29 @@ function funcionSinFuncion(){
     document.write("Ingresa tu documento correctamente<br>");
 }
 
+function mostrarMensaje() {
+    document.write("Cuidado<br>");
+    document.write("Ingresa tu documento correctamente<br>");
+}
+
 function funcionConFuncion(){
-    function mostrarMensaje() {
-        document.write("Cuidado<br>");
-        document.write("Ingresa tu documento correctamente<br>");
+    mostrarMensaje();
+    mostrarMensaje();
+    mostrarMensaje();
+}
+
+function mostrarRango(x1,x2) {
+    var inicio;
+    for(inicio=x1; inicio<=x2; inicio++) {
+        document.write(inicio+' ');
     }
-    mostrarMensaje();
-    mostrarMensaje();
-    mostrarMensaje();
+}
+
+function funcionConDatosEntrada(){
+        var valor1,valor2;
+        valor1 = prompt('Ingresa el valor inferior:', '');
+        valor1 = parseInt(valor1);
+        valor2 = prompt('Ingresa el valor superior:', '');
+        valor2 = parseInt(valor2);
+        mostrarRango(valor1,valor2);
 }
