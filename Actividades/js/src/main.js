@@ -239,3 +239,21 @@ function funcionRetornoVal(){
         var r = convertirCastellano(valor);
         document.write(r);
 }
+
+function switchCase(x){
+    switch (x) {
+        case 1: return "uno";
+        case 2: return "dos";
+        case 3: return "tres";
+        case 4: return "cuatro";
+        case 5: return "cinco";
+        default: return "valor incorrecto";
+    }
+}
+
+function switchcaseLect(){
+    var valor = prompt("Ingresa un valor entre 1 y 5", "");
+    valor = parseInt(valor);
+    var r = switchCase(valor);
+    document.write(r);
+}
