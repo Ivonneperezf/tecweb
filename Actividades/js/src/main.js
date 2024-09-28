@@ -9,78 +9,76 @@ function getDatos(){
     div2.innerHTML = '<h3>Edad:'+ edad +'</h3>';
 }
 
+//Ejercicio 1
 function holaMundo(){
-    document.write('Hola Mundo');
+    var div1 = document.getElementById("ejemplo1");
+    div1.innerHTML = "Hola Mundo";
 }
 
+//Ejercicio 2
 function variablesSinPrompt(){
+    var div1 = document.getElementById("ejemplo2");
     var nombre = 'Juan';
     var edad = 10;
     var altura = 1.92;
     var casado = false;
-    document.write( nombre );
-    document.write( '<br>' );
-    document.write( edad );
-    document.write( '<br>' );
-    document.write( altura );
-    document.write( '<br>' );
-    document.write( casado );
+    div1.innerHTML = nombre + '<br>' + edad + '<br>' + altura + '<br>' + casado;
 }
 
+//Ejercicio 3
 function variablesConPrompt(){
+    var div1 = document.getElementById("ejemplo3");
     var nombre;
     var edad;
     nombre = prompt('Ingresa tu nombre:', '');
     edad = prompt('Ingresa tu edad:', '');
-    document.write('Hola ');
-    document.write(nombre);
-    document.write(' así que tienes ');
-    document.write(edad);
-    document.write(' años');
+    div1.innerHTML = 'Hola '+nombre+' así que tienes '+edad+' años';
 }
 
+//Ejercicio 4
 function proEstructurada(){
+    var div1 = document.getElementById("ejemplo4");
     var valor1;
     var valor2;
     valor1 = prompt('Introducir primer número:', '');
     valor2 = prompt('Introducir segundo número', '');
     var suma = parseInt(valor1)+parseInt(valor2);
     var producto = parseInt(valor1)*parseInt(valor2);
-    document.write('La suma es ');
-    document.write(suma);
-    document.write('<br>');
-    document.write('El producto es ');
-    document.write(producto);
+    div1.innerHTML = 'La suma es '+suma+'<br>'+'El producto es '+producto;
 }
 
-
+//Ejercicio 5
 function sentenciaIf(){
+    var div1 = document.getElementById("ejemplo5");
     var nombre;
     var nota;
     nombre = prompt('Ingresa tu nombre:', '');
     nota = prompt('Ingresa tu nota:', '');
     if (nota>=4) {
-        document.write(nombre+' esta aprobado con un '+nota);
+        div1.innerHTML =nombre+' esta aprobado con un '+nota;
     }
 }
 
+//Ejercicio 6
 function sentenciaIfElse(){
+    var div1 = document.getElementById("ejemplo6");
     var num1,num2;
     num1 = prompt('Ingresa el primer número:', '');
     num2 = prompt('Ingresa el segundo número:', '');
     num1 = parseInt(num1);
     num2 = parseInt(num2);
     if (num1>num2) {
-        document.write('el mayor es '+num1);
+        div1.innerHTML = 'el mayor es '+num1;
     }
     else {
-        document.write('el mayor es '+num2);
+        div1.innerHTML = 'el mayor es '+num2;
     }
 }
 
+//Ejercicio 7
 function sentenciaIfElseAnidados(){
     var nota1,nota2,nota3;
-
+    var div1 = document.getElementById("ejemplo7");
     nota1 = prompt('Ingresa 1ra. nota:', '');
     nota2 = prompt('Ingresa 2da. nota:', '');
     nota3 = prompt('Ingresa 3ra. nota:', '');
@@ -93,36 +91,39 @@ function sentenciaIfElseAnidados(){
     var pro;
     pro = (nota1+nota2+nota3)/3;
     if (pro>=7) {
-        document.write('aprobado');
+        div1.innerHTML = 'aprobado';
     }else {
         if (pro>=4) {
-            document.write('regular');
+            div1.innerHTML = 'regular';
         }else {
-            document.write('reprobado');
+            div1.innerHTML = 'reprobado';
         }
     }
 }
 
+//Ejercicio 8
 function sentenciaSwitch(){
+    var div1 = document.getElementById("ejemplo8");
     var valor;
     valor = prompt('Ingresar un valor comprendido entre 1 y 5:', '' );
     //Convertimos a entero
     valor = parseInt(valor);
     switch (valor) {
-        case 1: document.write('uno');
+        case 1: div1.innerHTML = 'uno';
             break;
-        case 2: document.write('dos');
+        case 2: div1.innerHTML = 'dos';
             break;
-        case 3: document.write('tres');
+        case 3: div1.innerHTML = 'tres';
             break;
-        case 4: document.write('cuatro');
+        case 4: div1.innerHTML = 'cuatro';
             break;
-        case 5: document.write('cinco');
+        case 5: div1.innerHTML = 'cinco';
             break;
-        default:document.write('debe ingresar un valor comprendido entre 1 y 5.');
+        default:div1.innerHTML = 'debe ingresar un valor comprendido entre 1 y 5.';
     }
 }
 
+//Ejercicio 9
 function sentenciaSwitchColores(){
     var col;
     col = prompt('Ingresa el color con que quierar pintar el fondo de la ventana (rojo, verde, azul)' , '' );
@@ -135,17 +136,21 @@ function sentenciaSwitchColores(){
             break;
     }
 }
+
+//Ejercicio 10
 function cicloWhile(){
+    var div1 = document.getElementById("ejemplo10");
     var x;
     x=1;
     while (x<=100) {
-        document.write(x);
-        document.write('<br>');
-        x=x+1;
+        div1.innerHTML += '<br>'+x;
+        x+=1;
     }
 }
 
+//Ejercicio 11
 function acumulador(){
+    var div1 = document.getElementById("ejemplo11");
     var x=1;
     var suma=0;
     var valor;
@@ -155,69 +160,86 @@ function acumulador(){
         suma = suma+valor;
         x = x+1;
     }
-    document.write("La suma de los valores es "+suma+"<br>");
+    div1.innerHTML = "La suma de los valores es "+suma+"<br>";
 }
 
+//Ejercicio 12
 function cicloDoWhile(){
+    var div1 = document.getElementById("ejemplo12");
     var valor;
+    div1.innerHTML += '<br>';
     do{
         valor = prompt('Ingresa un valor entre 0 y 999:', '');
         valor = parseInt(valor);
-        document.write('El valor '+valor+' tiene ');
+        div1.innerHTML += 'El valor '+valor+' tiene ';
         if (valor<10)
-            document.write('Tiene 1 dígitos');
+            div1.innerHTML += 'Tiene 1 dígitos';
         else if (valor<100) {
-            document.write('Tiene 2 dígitos');
+            div1.innerHTML += 'Tiene 2 dígitos';
         }else {
-            document.write('Tiene 3 dígitos');
+            div1.innerHTML += 'Tiene 3 dígitos';
         }
-        document.write('<br>');
+        div1.innerHTML +='<br>';
     }while(valor!=0);
 }
 
+//Ejercicio 13
 function ciclofor(){
+    var div1 = document.getElementById("ejemplo13");
     var f;
+    div1.innerHTML += '<br>';
     for(f=1; f<=10; f++){
-        document.write(f+" ");
+        div1.innerHTML += f+" ";
     }
 }
 
+//Ejercicio 14
 function funcionSinFuncion(){
-    document.write("Cuidado<br>");
-    document.write("Ingresa tu documento correctamente<br>");
-    document.write("Cuidado<br>");
-    document.write("Ingresa tu documento correctamente<br>");
-    document.write("Cuidado<br>");
-    document.write("Ingresa tu documento correctamente<br>");
+    var div1 = document.getElementById("ejemplo14");
+    div1.innerHTML += "<br>Cuidado<br>";
+    div1.innerHTML += "Ingresa tu documento correctamente<br>";
+    div1.innerHTML += "Cuidado<br>";
+    div1.innerHTML += "Ingresa tu documento correctamente<br>";
+    div1.innerHTML += "Cuidado<br>";
+    div1.innerHTML += "Ingresa tu documento correctamente<br>";
 }
 
+//Ejercicio 15
 function mostrarMensaje() {
-    document.write("Cuidado<br>");
-    document.write("Ingresa tu documento correctamente<br>");
+    var div1 = document.getElementById("ejemplo15");
+    div1.innerHTML += "Cuidado<br>";
+    div1.innerHTML += "Ingresa tu documento correctamente<br>";
 }
 
 function funcionConFuncion(){
+    var div1 = document.getElementById("ejemplo15");
+    div1.innerHTML += "<br>";
     mostrarMensaje();
     mostrarMensaje();
     mostrarMensaje();
 }
 
+//Ejercicio 16
 function mostrarRango(x1,x2) {
+    var div1 = document.getElementById("ejemplo16");
     var inicio;
     for(inicio=x1; inicio<=x2; inicio++) {
-        document.write(inicio+' ');
+        div1.innerHTML += inicio+' ';
     }
 }
 
 function funcionConDatosEntrada(){
-        var valor1,valor2;
-        valor1 = prompt('Ingresa el valor inferior:', '');
-        valor1 = parseInt(valor1);
-        valor2 = prompt('Ingresa el valor superior:', '');
-        valor2 = parseInt(valor2);
-        mostrarRango(valor1,valor2);
+    var div1 = document.getElementById("ejemplo16");
+    div1.innerHTML = "<br>";
+    var valor1,valor2;
+    valor1 = prompt('Ingresa el valor inferior:', '');
+    valor1 = parseInt(valor1);
+    valor2 = prompt('Ingresa el valor superior:', '');
+    valor2 = parseInt(valor2);
+    mostrarRango(valor1,valor2);
 }
 
+//Ejercicio 17
 function convertirCastellano(x) {
     if(x==1)
         return "uno";
@@ -234,12 +256,15 @@ function convertirCastellano(x) {
 }
 
 function funcionRetornoVal(){
-        var valor = prompt("Ingresa un valor entre 1 y 5", "");
-        valor = parseInt(valor);
-        var r = convertirCastellano(valor);
-        document.write(r);
+    var div1 = document.getElementById("ejemplo17");
+    var valor = prompt("Ingresa un valor entre 1 y 5", "");
+    valor = parseInt(valor);
+    var r = convertirCastellano(valor);
+    div1.innerHTML = r;
 }
 
+
+//Ejercicio 18
 function switchCase(x){
     switch (x) {
         case 1: return "uno";
@@ -252,8 +277,9 @@ function switchCase(x){
 }
 
 function switchcaseLect(){
+    var div1 = document.getElementById("ejemplo18");
     var valor = prompt("Ingresa un valor entre 1 y 5", "");
     valor = parseInt(valor);
     var r = switchCase(valor);
-    document.write(r);
+    div1.innerHTML = r;
 }
