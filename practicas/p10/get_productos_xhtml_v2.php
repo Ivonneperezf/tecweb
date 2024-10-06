@@ -66,7 +66,7 @@
         </thead>
         <tbody>
             <?php foreach($data as $index => $row) { ?>
-                <tr>
+                <tr id="row-<?= $row['id'] ?>"> 
                     <th scope="row"><?= $index + 1 ?></th>
                     <td><?= $row['nombre'] ?></td>
                     <td><?= $row['marca'] ?></td>
@@ -75,7 +75,7 @@
                     <td><?= $row['unidades'] ?></td>
                     <td><?= $row['detalles'] ?></td>
                     <td><img src="<?= $row['imagen'] ?>" alt="Imagen de producto" width="100"></td>
-                    <td><input type="button" value="Modificar" onclick="show()" /></td>
+                    <td><input type="button" value="Modificar" onclick="show(event)" /></td>
                 </tr>
             <?php } ?>
         </tbody>
