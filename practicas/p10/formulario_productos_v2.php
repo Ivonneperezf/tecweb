@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario producto</title>
-    <script src = "./js/main.js"></script>
+    <script src = "./js/verificarValores.js"></script>
 </head>
 <body>
     <h1>Inserta tu producto</h1>
@@ -14,7 +14,8 @@
             <legend>Información del producto</legend>
             <ul>
                 <li>
-                    <label for="form-name">Nombre:</label> <input type="text" name="nombre" id="form-name" oninput="verificarNombre()" required>
+                    <label for="form-name">Nombre:</label> <input type="text" name="nombre" id="form-name" 
+                    value = "<?= !empty($_POST['nombre'])?$_POST['nombre']:''?>" oninput="verificarNombre()" required>
                     <div id="nombre-error" style="color:red;"></div>
                 </li>
 
@@ -22,21 +23,21 @@
                     <label for="form-marca">Marca:</label>
                     <select name="marca" id="form-marca" required onchange="verificarMarca()">
                         <option value="">Selecciona una marca</option>
-                        <option value="Nike">Nike</option>
-                        <option value="Adidas">Adidas</option>
-                        <option value="Puma">Puma</option>
-                        <option value="Reebok">Reebok</option>
-                        <option value="Under Armour">Under Armour</option>
-                        <option value="Zara">Zara</option>
-                        <option value="H&M">H&M</option>
-                        <option value="Levi's">Levi's</option>
-                        <option value="Calvin Klein">Calvin Klein</option>
-                        <option value="Tommy Hilfiger">Tommy Hilfiger</option>
-                        <option value="Gucci">Gucci</option>
-                        <option value="Chanel">Chanel</option>
-                        <option value="Prada">Prada</option>
-                        <option value="Ralph Lauren">Ralph Lauren</option>
-                        <option value="Burberry">Burberry</option>
+                        <option value="Nautica" <?= (isset($_POST['marca']) && $_POST['marca'] === 'Nautica') ? 'selected' : '' ?>>Nautica</option>
+                        <option value="Mango"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Mango') ? 'selected' : '' ?>>Mango</option>
+                        <option value="Urban Outfiters"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Urban Outfiters') ? 'selected' : '' ?>>Urban Outfiters</option>
+                        <option value="Banana Republic"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Banana Republic') ? 'selected' : '' ?>>Banana Republic</option>
+                        <option value="Under Armour"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Under Armour') ? 'selected' : '' ?>>Under Armour</option>
+                        <option value="Zara"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Zara') ? 'selected' : '' ?>>Zara</option>
+                        <option value="H&M"<?= (isset($_POST['marca']) && $_POST['marca'] === 'H&M') ? 'selected' : '' ?>>H&M</option>
+                        <option value="Levi's"<?= (isset($_POST['marca']) && $_POST['marca'] === "Levi's") ? 'selected' : '' ?>>Levi's</option>
+                        <option value="Calvin Klein"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Calvin Klein') ? 'selected' : '' ?>>Calvin Klein</option>
+                        <option value="Tommy Hilfiger"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Tommy Hilfiger') ? 'selected' : '' ?>>Tommy Hilfiger</option>
+                        <option value="Gucci"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Gucci') ? 'selected' : '' ?>>Gucci</option>
+                        <option value="Chanel"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Chanel') ? 'selected' : '' ?>>Chanel</option>
+                        <option value="Prada"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Prada') ? 'selected' : '' ?>>Prada</option>
+                        <option value="Ralph Lauren"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Ralph Lauren') ? 'selected' : '' ?>>Ralph Lauren</option>
+                        <option value="Burberry"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Burberry') ? 'selected' : '' ?>>Burberry</option>
                     </select>
                     <div id="marca-error" style="color:red;"></div>
                 </li>
@@ -71,6 +72,10 @@
             <input type="reset">
         </p>
     </form>
-
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $marca = !empty($_POST['marca']) ? htmlspecialchars($_POST['marca']) : htmlspecialchars("");
+    }
+    ?>
 </body>
 </html>

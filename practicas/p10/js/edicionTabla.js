@@ -19,7 +19,7 @@ function send2form(nombre, marca, modelo, precio, unidades, detalles) {
     console.log(form);
 
     form.method = 'POST';
-    form.action = 'http://localhost/tecweb/practicas/p10/formulario_productos.html';  
+    form.action = 'http://localhost/tecweb/practicas/p10/formulario_productos_v2.php';  
 
     document.body.appendChild(form);
     form.submit();
