@@ -46,6 +46,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Productos</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src = "./js/main.js"></script>
 </head>
 <body>
     <h2>Lista de Productos</h2>
@@ -60,6 +61,7 @@
             <th scope="col">Unidades</th>
             <th scope="col">Detalles</th>
             <th scope="col">Imagen</th>
+            <th scope="col">Modificar</th>
             </tr>
         </thead>
         <tbody>
@@ -73,6 +75,7 @@
                     <td><?= $row['unidades'] ?></td>
                     <td><?= $row['detalles'] ?></td>
                     <td><img src="<?= $row['imagen'] ?>" alt="Imagen de producto" width="100"></td>
+                    <td><input type="button" value="Modificar" onclick="show()" /></td>
                 </tr>
             <?php } ?>
         </tbody>
