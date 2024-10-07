@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Inserta tu producto</h1>
-    <form id="formularioProductos" action="http://localhost/tecweb/practicas/p10/set_producto_v2.php"
+    <form id="formularioProductos" action="http://localhost/tecweb/practicas/p10/update_producto.php"
           method="post" enctype="multipart/form-data">
         <fieldset>
             <legend>Información del producto</legend>
@@ -72,6 +72,7 @@
                     <div id="imgExistente">
                         <img id="imagenExistente" src="<?= !empty($_POST['imagen'])?$_POST['imagen']:''?>"  width="100">
                     </div>
+                    <!--input type="hidden" name="id" value=""-->
                 </li>
             </ul>
         </fieldset>

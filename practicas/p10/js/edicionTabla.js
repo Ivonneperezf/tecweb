@@ -10,7 +10,6 @@ function agregarAtributo(form, tipo, nombre, valor) {
 
 function send2form(nombre, marca, modelo, precio, unidades, detalles,imagen) {
     var form = document.createElement("form");
-
     agregarAtributo(form, 'text', 'nombre', nombre);
     agregarAtributo(form, 'text', 'marca', marca);
     agregarAtributo(form, 'text', 'modelo', modelo);
@@ -47,6 +46,7 @@ function show(event){
 function show2(event) {
     var row = event.target.closest('tr'); 
     var rowId = row.id; 
+    var idNumber = parseInt(rowId.split('-')[1]) + 1;
     var data = row.querySelectorAll("td");
     var nombre = data[0].innerHTML;
     var marca = data[1].innerHTML;
@@ -55,5 +55,6 @@ function show2(event) {
     var unidades = data[4].innerHTML;
     var detalles = data[5].innerHTML;
     var imagen = data[6].innerHTML;
-    send2form(nombre, marca, modelo, precio, unidades, detalles, imagen);
+    send2form(nombre, marca, modelo, precio, unidades, detalles, imagen); 
 }
+

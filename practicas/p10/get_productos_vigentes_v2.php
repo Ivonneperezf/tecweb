@@ -66,7 +66,7 @@
                 <td><?= htmlspecialchars($row['precio']) ?></td>
                 <td><?= htmlspecialchars($row['unidades']) ?></td>
                 <td><?= htmlspecialchars($row['detalles']) ?></td>
-                <td><img src="<?= htmlspecialchars($row['imagen']) ?>" alt="Imagen de producto" width="100"></td>
+                <td><img src="<?= htmlspecialchars($row['imagen']) ?>" width="100"></td>
                 <td><input type="button" value="Modificar" onclick="show2(event)" /></td>
             </tr>
         <?php } ?>
