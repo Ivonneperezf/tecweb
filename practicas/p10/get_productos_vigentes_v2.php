@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Productos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src = "./js/edicionTabla.js"></script>
 </head>
 
 <body>
@@ -52,11 +53,12 @@
             <th scope="col">Unidades</th>
             <th scope="col">Detalles</th>
             <th scope="col">Imagen</th>
+            <th scope="col">Modificar</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach($data as $index => $row) { ?>
-            <tr>
+            <tr id="row-<?= $index ?>"> 
                 <th scope="row"><?= $index + 1 ?></th>
                 <td><?= htmlspecialchars($row['nombre']) ?></td>
                 <td><?= htmlspecialchars($row['marca']) ?></td>
@@ -65,6 +67,7 @@
                 <td><?= htmlspecialchars($row['unidades']) ?></td>
                 <td><?= htmlspecialchars($row['detalles']) ?></td>
                 <td><img src="<?= htmlspecialchars($row['imagen']) ?>" alt="Imagen de producto" width="100"></td>
+                <td><input type="button" value="Modificar" onclick="show2(event)" /></td>
             </tr>
         <?php } ?>
     </tbody>
