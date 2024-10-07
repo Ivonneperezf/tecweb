@@ -2,11 +2,13 @@ function agregarAtributo(form, tipo, nombre, valor) {
     var ValorIn = document.createElement("input");
     ValorIn.type = tipo;
     ValorIn.name = nombre;
-    ValorIn.value = valor;
+    if (tipo !== 'file') {
+        ValorIn.value = valor; 
+    }
     form.appendChild(ValorIn);
 }
 
-function send2form(nombre, marca, modelo, precio, unidades, detalles) {
+function send2form(nombre, marca, modelo, precio, unidades, detalles,imagen) {
     var form = document.createElement("form");
 
     agregarAtributo(form, 'text', 'nombre', nombre);
@@ -15,6 +17,10 @@ function send2form(nombre, marca, modelo, precio, unidades, detalles) {
     agregarAtributo(form, 'number', 'precio', precio);
     agregarAtributo(form, 'text', 'detalles', detalles);
     agregarAtributo(form, 'number', 'unidades', unidades);
+    if (imagen) {
+        var srcMatch = imagen.match(/src="([^"]+)"/);
+        agregarAtributo(form, 'text', 'imagen', srcMatch[1]);
+    }
 
     console.log(form);
 
@@ -28,12 +34,13 @@ function send2form(nombre, marca, modelo, precio, unidades, detalles) {
 function show(event){
     var rowId = event.target.parentNode.parentNode.id;
     var data = document.getElementById(rowId).querySelectorAll("td");
-    alert(data[7].innerHTML);
     var nombre = data[0].innerHTML;
     var marca = data[1].innerHTML;
     var modelo = data[2].innerHTML;
     var precio = data[3].innerHTML;
     var unidades = data[4].innerHTML;
     var detalles = data[5].innerHTML;
-    send2form(nombre, marca, modelo, precio, unidades, detalles);
+    var imagen = data[6].innerHTML;
+    alert(imagen);
+    send2form(nombre, marca, modelo, precio, unidades, detalles,imagen);
 }

@@ -43,27 +43,35 @@
                 </li>
 
                 <li>
-                    <label for="form-modelo">Modelo:</label><input type="text" name="modelo" id="form-modelo" oninput="verificarModelo()" required>
+                    <label for="form-modelo">Modelo:</label><input type="text" name="modelo" id="form-modelo" oninput="verificarModelo()"
+                    value = "<?= !empty($_POST['modelo'])?$_POST['modelo']:''?>" required>
                     <div id="modelo-error" style="color:red;"></div>
                 </li>
 
                 <li>
-                    <label for="form-precio">Precio:</label><input type="number" name="precio" id="form-precio" step="0.01" oninput="verificarPrecio()" required>
+                    <label for="form-precio">Precio:</label><input type="number" name="precio" id="form-precio" step="0.01" oninput="verificarPrecio()" 
+                    value = "<?= !empty($_POST['precio'])?$_POST['precio']:''?>" required>
                     <div id="precio-error" style="color:red;"></div>
                 </li>
 
                 <li>
-                    <label for="form-detalles">Detalles:</label><br><textarea name="detalles" rows="4" cols="60" id="form-detalles" placeholder="Detalles adicionales" oninput="verificarDetalles()"></textarea>
+                    <label for="form-detalles">Detalles:</label><br>
+                    <textarea name="detalles" rows="4" cols="60" id="form-detalles" placeholder="Detalles adicionales" oninput="verificarDetalles()"><?= !empty($_POST['detalles']) ? htmlspecialchars($_POST['detalles']) : '' ?></textarea>
                     <div id="detalles-error" style="color:red;"></div>
                 </li>
 
                 <li>
-                    <label for="form-unidades">Unidades:</label><input type="number" name="unidades" id="form-unidades" required oninput="verificarUnidades()">
+                    <label for="form-unidades">Unidades:</label><input type="number" name="unidades" id="form-unidades" 
+                    value = "<?= !empty($_POST['unidades'])?$_POST['unidades']:''?>" required oninput="verificarUnidades()">
                     <div id="unidades-error" style="color:red;"></div>
                 </li>
 
                 <li>
-                    <label for="form-imagen">Imagen:</label> <input type="file" name="imagen" id="form-imagen" accept="image/*" onchange="verificarImagen()">
+                    <label for="form-imagen">Imagen:</label> 
+                    <input type="file" name="imagen" id="form-imagen" accept="image/*" onchange="verificarImagen()">
+                    <div id="imgExistente">
+                        <img id="imagenExistente" src="<?= !empty($_POST['imagen'])?$_POST['imagen']:''?>"  width="100">
+                    </div>
                 </li>
             </ul>
         </fieldset>
@@ -72,10 +80,5 @@
             <input type="reset">
         </p>
     </form>
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $marca = !empty($_POST['marca']) ? htmlspecialchars($_POST['marca']) : htmlspecialchars("");
-    }
-    ?>
 </body>
 </html>

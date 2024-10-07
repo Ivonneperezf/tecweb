@@ -71,12 +71,18 @@ function verificarUnidades(){
     }
 }
 
-function verificarImagen(){
+function verificarImagen() {
     var inputImagen = document.getElementById("form-imagen");
-    var formData = new FormData(document.getElementById("formularioProductos"));
-    if (!(inputImagen.files.length === 0)) {
+    var imgExistente = document.getElementById("imagenExistente");
+    if (inputImagen.files && inputImagen.files[0]) {
         var file = inputImagen.files[0];
-        formData.append("imagen", file);
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            imgExistente.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    } else {
+        imgExistente.src = "<?= !empty($_POST['imagen']) ? $_POST['imagen'] : '' ?>";
     }
 }
 
