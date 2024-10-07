@@ -62,7 +62,10 @@
                 </li>
 
                 <li>
-                    <label for="form-imagen">Imagen:</label> <input type="file" name="imagen" id="form-imagen" accept="image/*" onchange="verificarImagen()">
+                    <label for="form-imagen">Imagen:</label> <input type="file" name="imagen" id="form-imagen" accept="image/*" onchange="verificarImagenhtml()">
+                    <div id="imgExistente">
+                        <img id="imagenExistente" src="" alt="Imagen seleccionada" style="max-width: 300px; display: none;">
+                    </div>
                 </li>
             </ul>
         </fieldset>

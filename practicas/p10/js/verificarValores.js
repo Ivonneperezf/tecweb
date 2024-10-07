@@ -86,3 +86,20 @@ function verificarImagen() {
     }
 }
 
+function verificarImagenhtml() {
+    var inputImagen = document.getElementById("form-imagen");
+    var imgExistente = document.getElementById("imagenExistente");
+
+    if (inputImagen.files && inputImagen.files[0]) {
+        var file = inputImagen.files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            imgExistente.src = e.target.result;
+            imgExistente.style.display = 'block'; 
+        };
+        reader.readAsDataURL(file);
+    } else {
+        imgExistente.src = "";
+        imgExistente.style.display = 'none'; 
+    }
+}
