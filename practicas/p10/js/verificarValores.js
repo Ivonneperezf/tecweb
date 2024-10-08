@@ -82,7 +82,7 @@ function verificarImagen() {
         };
         reader.readAsDataURL(file);
     } else {
-        imgExistente.src = "<?= !empty($_POST['imagen']) ? $_POST['imagen'] : '' ?>";
+        imgExistente.src = "<?= !empty($_POST['imagen']) ? $_POST['imagen'] : 'imagenPorDefecto.png' ?>";
     }
 }
 
