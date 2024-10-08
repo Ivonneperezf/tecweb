@@ -23,7 +23,7 @@
 		}
 
 		/** Crear una tabla que no devuelve un conjunto de resultados */
-		if ( $result = $link->query("SELECT * FROM productos WHERE unidades <= $tope") ) 
+		if ( $result = $link->query("SELECT * FROM productos WHERE unidades <= $tope AND eliminado = 0") ) 
 		{
             /** Se extraen las tuplas obtenidas de la consulta */
 			$row = $result->fetch_all(MYSQLI_ASSOC);
@@ -66,16 +66,16 @@
         </thead>
         <tbody>
             <?php foreach($data as $index => $row) { ?>
-                <tr id="row-<?= $row['id'] ?>"> 
+                <tr id="row-<?= $index ?>"> 
                     <th scope="row"><?= $index + 1 ?></th>
-                    <td><?= $row['nombre'] ?></td>
-                    <td><?= $row['marca'] ?></td>
-                    <td><?= $row['modelo'] ?></td>
-                    <td><?= $row['precio'] ?></td>
-                    <td><?= $row['unidades'] ?></td>
-                    <td><?= $row['detalles'] ?></td>
-                    <td><img src="<?= $row['imagen'] ?>" alt="Imagen de producto" width="100"></td>
-                    <td><input type="button" value="Modificar" onclick="show(event)" /></td>
+                    <td><?= htmlspecialchars($row['nombre']) ?></td>
+                    <td><?= htmlspecialchars($row['marca']) ?></td>
+                    <td><?= htmlspecialchars($row['modelo']) ?></td>
+                    <td><?= htmlspecialchars($row['precio']) ?></td>
+                    <td><?= htmlspecialchars($row['unidades']) ?></td>
+                    <td><?= htmlspecialchars($row['detalles']) ?></td>
+                    <td><img src="<?= htmlspecialchars($row['imagen']) ?>" width="100"></td>
+                    <td><input type="button" value="Modificar" onclick="show2(event)" /></td>
                 </tr>
             <?php } ?>
         </tbody>
