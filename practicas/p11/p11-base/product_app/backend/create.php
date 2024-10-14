@@ -1,5 +1,5 @@
 <?php
-    include_once __DIR__.'/database.php';
+    include 'database.php';
 
     // SE OBTIENE LA INFORMACIÓN DEL PRODUCTO ENVIADA POR EL CLIENTE
     $producto = file_get_contents('php://input');
