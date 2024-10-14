@@ -18,7 +18,6 @@ if (!empty($producto)) {
 
     // Validar que el producto no exista ya en la BD
     $nombre = $jsonOBJ->nombre;
-    echo($nombre);
     $check_sql = "SELECT * FROM productos WHERE nombre = '{$nombre}' AND eliminado = 0";
     $result = $link->query($check_sql);
 

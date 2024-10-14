@@ -47,7 +47,6 @@ function verificarModelo(modelo) {
 
 function verificarPrecio(precio) {
     // Convertir el valor a número
-    alert(precio);
     var precioNum = parseFloat(precio); 
     var mensajeError = document.getElementById("error5");
 
@@ -169,9 +168,9 @@ function agregarProducto(e) {
 
     // OBTENEMOS EL NOMBRE DEL PRODUCTO DESDE EL DOM
     var nombre = document.getElementById("name").value;
-    
+
     // Verificar cada campo utilizando los datos del JSON
-    var nombreValido = verificarNombre(nombre); // Verificación del nombre
+    /*var nombreValido = verificarNombre(nombre); // Verificación del nombre
     var marcaValida = verificarMarca(finalJSON.marca);
     var modeloValido = verificarModelo(finalJSON.modelo);
     var precioValido = verificarPrecio(finalJSON.precio);
@@ -182,7 +181,7 @@ function agregarProducto(e) {
     if (!nombreValido || !marcaValida || !modeloValido || !precioValido || !detallesValidos || !unidadesValidas) {
         window.alert("Por favor, corrige los errores antes de enviar.");
         return; // No se continúa con el envío
-    } 
+    } */
 
     // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
     finalJSON['nombre'] = nombre;
@@ -197,13 +196,13 @@ function agregarProducto(e) {
     client.onreadystatechange = function () {
         // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
         if (client.readyState == 4 && client.status == 200) {
-            window.alert("El envío fue exitoso");
-            console.log(client.responseText);
-            window.alert(client.responseText); // Muestra la respuesta del servidor
+            var response = JSON.parse(client.responseText); // Parsear la respuesta
+            window.alert(response.mensaje); // Mostrar mensaje
         }
     };
     client.send(productoJsonString);
 }
+
 
 function verificarInput() {
     var nombre = document.getElementById("name").value;
