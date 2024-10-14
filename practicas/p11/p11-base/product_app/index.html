@@ -23,10 +23,10 @@
         <!-- FORMULARIO PARA AGREGAR PRODUCTO -->
         <form id="task-form">
           <div>
-            <input type="text" id="name" placeholder="Nombre de producto">
+            <input type="text" id="name" placeholder="Nombre de producto" oninput="verificarInput()">
           </div>
           <div>
-            <textarea id="description" cols="30" rows="10" placeholder="JSON de producto"></textarea>
+            <textarea id="description" cols="30" rows="10" placeholder="JSON de producto" oninput="verificarInput()"></textarea>
           </div>
           <input type="hidden" id="taskId">
           <button type="submit" onclick="agregarProducto(event)" >
@@ -34,6 +34,10 @@
           </button>
         </form>
       </div>
+      <div id="error" style="color:red;"></div>
+      <div id="error2" style="color:red;"></div>
+      <div id="error3" style="color:red;"></div>
+      <div id="error4" style="color:red;"></div>
 
       <!-- TABLA  -->
       <div>

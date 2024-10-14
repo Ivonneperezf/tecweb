@@ -61,7 +61,7 @@ function buscarID(e) {
 }
 
 // FUNCIÓN CALLBACK DE BOTÓN "Agregar Producto"
-function agregarProducto(e) {
+function agregarProductoanterior(e) {
     e.preventDefault();
 
     // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
