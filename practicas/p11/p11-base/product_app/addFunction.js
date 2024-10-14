@@ -47,8 +47,9 @@ function verificarModelo(modelo) {
 
 function verificarPrecio(precio) {
     // Convertir el valor a número
+    alert(precio);
     var precioNum = parseFloat(precio); 
-    var mensajeError = document.getElementById("error");
+    var mensajeError = document.getElementById("error5");
 
     // Validar si es un número válido
     if (isNaN(precioNum)) {
@@ -161,28 +162,33 @@ function buscarProducto(e) {
 function agregarProducto(e) {
     e.preventDefault();
 
-    // Verificar cada campo
-    var nombreValido = verificarNombre();
-    var marcaValida = verificarMarca();
-    var modeloValido = verificarModelo();
-    var precioValido = verificarPrecio();
-    var detallesValidos = verificarDetalles();
-    var unidadesValidas = verificarUnidades();
-
-    // Si alguna verificación falla, no enviar el producto
-    if (!nombreValido || !marcaValida || !modeloValido || !precioValido || !detallesValidos || !unidadesValidas) {
-        document.getElementById("error").textContent = "Por favor, corrige los errores antes de enviar.";
-        return; // No se continúa con el envío
-    }
-
     // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
     var productoJsonString = document.getElementById('description').value;
     // SE CONVIERTE EL JSON DE STRING A OBJETO
     var finalJSON = JSON.parse(productoJsonString);
+
+    // OBTENEMOS EL NOMBRE DEL PRODUCTO DESDE EL DOM
+    var nombre = document.getElementById("name").value;
+    
+    // Verificar cada campo utilizando los datos del JSON
+    var nombreValido = verificarNombre(nombre); // Verificación del nombre
+    var marcaValida = verificarMarca(finalJSON.marca);
+    var modeloValido = verificarModelo(finalJSON.modelo);
+    var precioValido = verificarPrecio(finalJSON.precio);
+    var detallesValidos = verificarDetalles(finalJSON.detalles);
+    var unidadesValidas = verificarUnidades(finalJSON.unidades);
+
+    // Si alguna verificación falla, no enviar el producto
+    if (!nombreValido || !marcaValida || !modeloValido || !precioValido || !detallesValidos || !unidadesValidas) {
+        window.alert("Por favor, corrige los errores antes de enviar.");
+        return; // No se continúa con el envío
+    } 
+
     // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
-    finalJSON['nombre'] = document.getElementById('name').value;
+    finalJSON['nombre'] = nombre;
+
     // SE OBTIENE EL STRING DEL JSON FINAL
-    productoJsonString = JSON.stringify(finalJSON,null,2);
+    productoJsonString = JSON.stringify(finalJSON, null, 2);
 
     // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
     var client = getXMLHttpRequest();
@@ -191,7 +197,9 @@ function agregarProducto(e) {
     client.onreadystatechange = function () {
         // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
         if (client.readyState == 4 && client.status == 200) {
+            window.alert("El envío fue exitoso");
             console.log(client.responseText);
+            window.alert(client.responseText); // Muestra la respuesta del servidor
         }
     };
     client.send(productoJsonString);
