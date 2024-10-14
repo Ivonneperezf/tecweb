@@ -4,26 +4,19 @@ function verificarNombre() {
 
     if (nombre.trim() === "") {
         mensajeError.textContent = "Inserte un nombre"; 
-        return false; // La verificación falla
     } else if (nombre.length > 100) {
         mensajeError.textContent = "El nombre es demasiado largo";
-        return false; // La verificación falla
     } else {
         mensajeError.textContent = ""; 
-        return true; // La verificación pasa
     }
 }
 
 function verificarMarca() {
     var marca = document.getElementById("form-marca").value;
     var mensajeError = document.getElementById("marca-error");
-
+    mensajeError.textContent = "";
     if (marca === "") {
         mensajeError.textContent = "Por favor, selecciona una marca.";
-        return false; // La verificación falla
-    } else {
-        mensajeError.textContent = ""; 
-        return true; // La verificación pasa
     }
 }
 
@@ -33,64 +26,48 @@ function verificarModelo(){
 
     if (modelo.trim() === "") {
         mensajeError.textContent = ""; 
-        return true; // Se permite un campo vacío
     } else if (modelo.length > 25) {
         mensajeError.textContent = "El modelo es demasiado largo";
-        return false; // La verificación falla
     } else if (!/^[a-zA-Z0-9]+$/.test(modelo)) {
-        mensajeError.textContent = "El modelo solo debe contener caracteres alfanuméricos";
-        return false; // La verificación falla
+        mensajeError.textContent = "El modelo solo debe contener caracteres alfanuméricos (letras y números)";
     } else {
         mensajeError.textContent = ""; 
-        return true; // La verificación pasa
     }
 }
 
 function verificarPrecio() {
     var precio = document.getElementById("form-precio").value;
     var mensajeError = document.getElementById("precio-error");
-
     if (precio.trim() === "") {
         mensajeError.textContent = ""; 
-        return true; // Se permite un campo vacío
-    } else if (parseFloat(precio) < 99.99) {
+    } else if (parseFloat(precio) < 99.99) { 
         mensajeError.textContent = "El precio debe de ser mayor a 99.99";
-        return false; // La verificación falla
     } else {
         mensajeError.textContent = ""; 
-        return true; // La verificación pasa
     }
 }
 
 function verificarDetalles(){
     var detalles = document.getElementById("form-detalles").value;
     var mensajeError = document.getElementById("detalles-error");
-
-    if (detalles.trim() === "") {
+    if (detalles.trim() == ""){
         mensajeError.textContent = ""; 
-        return true; // Se permite un campo vacío
-    } else if (detalles.length > 250) {
+    }else if(detalles.length > 250){
         mensajeError.textContent = "Texto demasiado largo";
-        return false; // La verificación falla
     } else {
-        mensajeError.textContent = ""; 
-        return true; // La verificación pasa
+        mensajeError.textContent = "";
     }
 }
 
 function verificarUnidades(){
     var unidades = document.getElementById("form-unidades").value;
     var mensajeError = document.getElementById("unidades-error");
-
     if (unidades.trim() === "") {
         mensajeError.textContent = ""; 
-        return true; // Se permite un campo vacío
-    } else if (unidades < 0) {
+    } else if (unidades < 0) { 
         mensajeError.textContent = "Debe de haber al menos 0 unidades";
-        return false; // La verificación falla
     } else {
         mensajeError.textContent = ""; 
-        return true; // La verificación pasa
     }
 }
 

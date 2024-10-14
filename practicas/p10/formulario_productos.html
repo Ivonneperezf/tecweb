@@ -9,7 +9,7 @@
 <body>
     <h1>Inserta tu producto</h1>
     <form id="formularioProductos" action="http://localhost/tecweb/practicas/p10/set_producto_v2.php"
-          method="post" enctype="multipart/form-data">
+          method="post" enctype="multipart/form-data" onsubmit="return enviarFormulario(event)">
         <fieldset>
             <legend>Información del producto</legend>
             <ul>
@@ -74,6 +74,28 @@
             <input type="reset">
         </p>
     </form>
+
+    <script>
+        function enviarFormulario(e) {
+            e.preventDefault(); // Prevenir el envío predeterminado del formulario
+            
+            // Verificar todos los campos
+            var esValido = verificarNombre() &&
+                           verificarMarca() &&
+                           verificarModelo() &&
+                           verificarPrecio() &&
+                           verificarDetalles() &&
+                           verificarUnidades() &&
+                           verificarImagen();
+
+            // Si todas las verificaciones pasan, se envía el formulario
+            if (esValido) {
+                document.getElementById("formularioProductos").submit(); // Enviar el formulario
+            } else {
+                console.log("El formulario tiene errores. No se puede enviar.");
+            }
+        }
+    </script>
 
 </body>
 </html>
