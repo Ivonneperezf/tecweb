@@ -17,7 +17,7 @@
         $imagen = 'img/' . basename($_FILES['imagen']['name']);
         if ($_FILES['imagen']['error'] === UPLOAD_ERR_NO_FILE) {
             // Si no se subió, asignar la imagen predeterminada
-            $imagen = 'img/imagenPorDefecto.png';
+            $imagen = 'img/default.png';
         } else {
             if (!move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen)) {
                 die('<h1>Error al subir la imagen</h1>');
