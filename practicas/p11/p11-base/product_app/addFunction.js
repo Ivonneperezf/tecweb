@@ -15,17 +15,36 @@ function verificarNombre(nombre) {
 }
 
 function verificarMarca(marca) {
-    //var marca = document.getElementById("form-marca").value;
     var mensajeError = document.getElementById("error3");
-
+    const marcasValidas = [
+        "Nautica",
+        "Mango",
+        "Urban Outfiters",
+        "Banana Republic",
+        "Under Armour",
+        "Zara",
+        "H&M",
+        "Levi's",
+        "Calvin Klein",
+        "Tommy Hilfiger",
+        "Gucci",
+        "Chanel",
+        "Prada",
+        "Ralph Lauren",
+        "Burberry"
+    ];
     if (marca === "") {
         mensajeError.textContent = "Por favor, selecciona una marca.";
         return false; // La verificación falla
-    } else {
-        mensajeError.textContent = ""; 
-        return true; // La verificación pasa
-    }
+    } 
+    if (!marcasValidas.includes(marca)) {
+        mensajeError.textContent = "Marca no válida. Por favor, selecciona una marca de la lista.";
+        return false; // La verificación falla
+    } 
+    mensajeError.textContent = ""; 
+    return true; // La verificación pasa
 }
+
 
 function verificarModelo(modelo) {
     var mensajeError = document.getElementById("error2");
