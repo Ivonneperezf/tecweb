@@ -8,6 +8,8 @@ var baseJSON = {
     "imagen": "img/default.png"
   };
 
+var edit = false;
+
 function init() {
     /**
      * Convierte el JSON a string para poder mostrarlo
@@ -17,9 +19,9 @@ function init() {
     document.getElementById("description").value = JsonString;
     buscarProducto();
     eliminarProducto();
-    // SE LISTAN TODOS LOS PRODUCTOS
     listarProductos();
     agregarProducto();
+    editarProducto();
 }
 
 function listarProductos(){
@@ -41,7 +43,7 @@ function listarProductos(){
 
                 template += `<tr productId = "${product.id}">
                     <td>${product.id}</td>
-                    <td>${product.nombre}</td>
+                    <td><a href="#" class = product-item>${product.nombre}</a></td>
                     <td><ul>${descripcion}</ul></td>
                         <td>
                             <button class="product-delete btn btn-danger">
@@ -95,7 +97,7 @@ function buscarProducto() {
 
                     productTableTemplate += `<tr productId="${product.id}">  // Línea agregada
                         <td>${product.id}</td>
-                        <td>${product.nombre}</td>
+                        <td><a href="#" class = product-item>${product.nombre}</a></td>
                         <td><ul>${descripcion}</ul></td>
                         <td>
                             <button class="product-delete btn btn-danger">
@@ -129,7 +131,7 @@ function agregarProducto() {
         const unidades = productData.unidades;
         const modelo = productData.modelo;
         if (!nombre) {
-            alert("Inserte elnombre del product");
+            alert("Inserte el nombre del producto");
             return;
         }
         if (!modelo || /[^a-zA-Z0-9-]/.test(modelo)) {
@@ -149,6 +151,7 @@ function agregarProducto() {
             return;
         }
         const postData = {
+            id : $('#productId').val(),
             nombre: nombre,
             marca: productData.marca,
             modelo: modelo,
@@ -157,13 +160,15 @@ function agregarProducto() {
             detalles: productData.detalles,
             imagen: productData.imagen
         };
+        let url = edit === false ? 'backend/product-add.php' : 'backend/product-edit.php';
         $.ajax({
-            url: 'backend/product-add.php',
+            url: url,
             type: 'POST',
             contentType: 'application/json',  
             data: JSON.stringify(postData),   
             success: function(response) {
-                let result = JSON.parse(response);
+                console.log(response);
+                let result = typeof response === 'string' ? JSON.parse(response):response;
                 if (result.status === "success") {
                     alert("Registro exitoso");
                     listarProductos();  // Función para listar los productos después de agregar
@@ -187,8 +192,31 @@ function eliminarProducto() {
             let id = $(element).attr('productId');
             $.get('backend/product-delete.php', {id}, function(response){
                 listarProductos();
+                alert("Producto eliminado exitosamente.");
                 //console.log(response);
             })
         }
+    });
+}
+
+function editarProducto() {
+    $(document).on('click', '.product-item', function() {
+        let element = $(this)[0].parentElement.parentElement;
+        let id = $(element).attr('productId');
+        $.post('backend/product-single.php', { id }, function(response) {
+            const product = JSON.parse(response);
+            $('#name').val(product.nombre);
+            let desc = `{
+"precio": ${product.precio}, 
+"unidades": ${product.unidades}, 
+"modelo": "${product.modelo}", 
+"marca": "${product.marca}", 
+"detalles": "${product.detalles}", 
+"imagen": "${product.imagen}"
+}`;
+            $('#description').val(desc);
+            $('#productId').val(product.id);
+            edit = true;
+        });
     });
 }
