@@ -1,0 +1,123 @@
+[33m420575f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m)[m Se elimino el contenido de app.js
+[33mf853451[m Se copiaron los archivos
+[33mf6e7d51[m Se hicieron algunos cambios
+[33md3d19bd[m Se agregaron los archivos p12 base
+[33m629ed3f[m Se cragaron nuevos ejemplos
+[33m28a077e[m[33m ([m[1;31morigin/dev[m[33m)[m Se hicieron ultimos cambios
+[33me678e54[m Se hicieron algunos cambios
+[33maf03375[m Se agrego el punto 3
+[33m8a429ee[m Se agregaron las validaciones
+[33m231843d[m Se cambiaron detalles en la practica 10
+[33m16f2acc[m Se realizo el punto 2
+[33m74ec9d9[m Se hicieron algunos cambios en los ejemplos
+[33m53f05f6[m Se agregaroon los ejemplos base de la practica 11
+[33m13e9fc1[m Se agregaron cambios a archivo con tope
+[33m9160fe0[m Se realizaron cambios pequeños
+[33m0b726b2[m Se agregaron los cambios para editar los productos
+[33m1459f1c[m Se realizaron algunas modificaciones
+[33m71cd02b[m Se modificaron los productos vigentes
+[33me0e8607[m Se modifico el formulario para recibir datos editables
+[33m8c5f5d4[m Se edito el formulario php con la entrada de marca
+[33m30a57f7[m Se movieron algunos archivos
+[33mfaf2d61[m Se cambiaron los nombres de los archivos
+[33mf86145a[m Se modifico el archivo para editar en formulario 1
+[33m4a592c5[m Se copiaron los archivos necesarios
+[33m16c4b6f[m Se realizaron las verificaciones necesarias por campo
+[33m1811a3b[m Se copio el archivo formulario_producto.html
+[33m7d96013[m Se editaron las rutas para los ejemplos
+[33mc1d2088[m Se agregaron los ejemplos en practica 10
+[33m175a50b[m Se movio el contenido anterior a ejemplos
+[33mcd6b9ba[m Se agregaron los ejemplos de JavaScript
+[33mf6b7a19[m Se realizaron modificaciones a los ejercicios
+[33mf183056[m Se realizo el ejemplo 18
+[33m8ba11af[m Se realizo el ejemplo 17
+[33mfaf9fd3[m Se realizo el ejemplo 16
+[33m5a7127f[m Se realizo el ejemplo 15
+[33m9a2cf82[m Se realizo el ejemplo 14
+[33m59c6941[m Se realizo el ejemplo 13
+[33m8eb8382[m Se realizo el ejemplo 12
+[33m64ce94d[m Se realizo el ejemplo 11
+[33m3ec1b0c[m Se realizo el ejemplo 10
+[33md494b32[m Se realizo el ejemplo 9
+[33m77d484d[m Se realizo el ejemplo 8
+[33m00d6a9a[m Se realizo el ejemplo 7
+[33mfe8f622[m Se realizo el ejemplo 6
+[33mdeab61d[m Se realizo el ejemplo 5
+[33m19e2614[m Se realizo el ejemplo 4
+[33m32f05e1[m Se realizo el ejemplo 3
+[33m1b691fb[m Se hizo el ejercicio 1 y 2
+[33m8642d59[m Se creo el ejemplo
+[33mafa073b[m Se creo el archivo get_productos_vigentes.php
+[33m9b1a617[m Se copio el archivo get_productos.php
+[33mc81f07e[m Se modifico la query de insercion
+[33me6fad29[m Se agrego el valor de eliminado
+[33m8965a4b[m Se agrego formulario e informacion de inserciones de producto
+[33m78ddeb8[m Se creo el archivo set_producto_v2.php.:
+[33m9cc3e54[m Se creo el formulario para productos
+[33maa775b3[m Se agrego formulario_productos.html
+[33m723ec50[m Se cambiaron las contraseñas
+[33mbe55f37[m Se agregaron los documentos base
+[33m40e7e04[m Se modifico la practica 5
+[33mbd89448[m Se realizo el programa get_productos_xhtml.php
+[33m2c094e1[m Se cambiaron las contrañas de los archivos php
+[33mf1e70aa[m Se agregaron imagenes de productos
+[33m95c8f0d[m Se agregaron los archivos de referencia
+[33me766c37[m Se realizo el ejercicio 6
+[33m3965a38[m Se realizo el ejercicio 5
+[33m14a438e[m Se realizo el ejercicio 4
+[33m7d7ad8c[m Se realizo el ejercicio 3
+[33mc32dce1[m Se realizo el ejercicio2
+[33m6b1d2a4[m Se realizo el ejercicio 1
+[33m6a731ec[m Se crearon los archivos funciones.php e index.php
+[33m7cc4b0a[m Se cambio el URL
+[33m05c1207[m Se agregaron las etiquetas fieldset y legend
+[33m75c4db4[m Se agrego el menu desplegable
+[33m90191b9[m Se realizo el listado de checkbox
+[33mc6428c1[m Se agregaron los botones de radio
+[33ma84d0a4[m Se cambio el URL
+[33ma29c26f[m Se agregaron los botones
+[33md45b8ad[m Se agrego el texto multilinea
+[33md72d525[m Se agregaron los primeros tres controles
+[33m3ef1ac5[m Se agrego form
+[33m290020b[m Se agrego el archivo formulario.html
+[33m22d030b[m Se reaizo el ejercicio 7
+[33m2f5fcac[m Se reaizo el ejercicio 6
+[33macd3dca[m Se reaizo el ejercicio 5
+[33m3d9aca5[m Se reaizo el ejercicio 4
+[33maa0ec9b[m Se reaizo el ejercicio 3
+[33m8967d77[m Se reaizo el ejercicio 2
+[33m385f1c3[m Se verificaron las variables del ejercicio 1
+[33m2d613fa[m Se creo el archivo index.php
+[33mc950bf8[m Se crearon los archivos de las notas
+[33mcd98b6f[m Se creo y se agrego contenido a info.php
+[33ma8775d0[m Se agrego contenido a fechaservidor.php
+[33m6fa61b6[m Se creo la carpeta p04 y el archivo fechaservidor.php
+[33m1a06237[m Se creo un archivo index
+[33m9cb1fd6[m Se agrego un segundo elemento a sous vide
+[33m81f086c[m Se agregaron comentarios a las etiquetas previas a ej2
+[33mf544bfb[m Se agregaron las etiquetas del ejercicio2
+[33m9fc625f[m Se renombraron los archivos de index de cada ejercicio
+[33m921e48b[m Se creo la estructura principal en index
+[33m7b2ca48[m Se creo la carpeta ejercico2 y se añadio su estructura de carpetas e index
+[33m0cb94dc[m Se creo la carpeta ejercicio1 y se movieron sus archivos correspondientes
+[33md8d1c7f[m Se agregaron las etiquetas al texto en bruto
+[33mf6da716[m Se agrego el texto en bruto en index
+[33m77f0462[m Se ha agregado la escritura en index.html
+[33m12daad5[m Creamos la estructura de carpetas de la practica 3
+[33mcd6227d[m Colocacion de estilo a imagen con el elemento div
+[33m0301ff2[m Se cambio la apariencia de la pagina
+[33m9732fa3[m Agregacion de imagen y saltos de linea
+[33ma20e792[m Se agregaron etiquetas al texto en index.html
+[33m4a5e02c[m Cambio de titulo en index.html
+[33mc73babc[m Se creó la estructura basica en el archivo index.html
+[33m3dde068[m Se insertó el texto a info.txt
+[33m2c37cc2[m Se creó la estructura de carpetas en p02
+[33m6cc864e[m Se han copiado los archivos tecnologia1.txt y tecnologia2.txt
+[33m4742fbc[m Se han agregado los archivos tecnologia1.txt y tecnologia2.txt
+[33m803eb8b[m Se ha agregado imagen02.png
+[33mf7b790f[m Se ha agregado imagen01.png
+[33mf9f0dd2[m Se actualizo la descripcion
+[33mc3a9b16[m Se actualizo el periodo
+[33m45b243e[m Se actualizo el nombre
+[33m27a0c92[m Se actualizo la matricula
+[33m2039d44[m Initial commit
