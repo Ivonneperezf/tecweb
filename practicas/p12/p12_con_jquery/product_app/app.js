@@ -16,6 +16,7 @@ function init() {
     var JsonString = JSON.stringify(baseJSON,null,2);
     document.getElementById("description").value = JsonString;
     buscarProducto();
+    eliminarProducto();
     // SE LISTAN TODOS LOS PRODUCTOS
     listarProductos();
     agregarProducto();
@@ -59,7 +60,8 @@ function buscarProducto() {
     $('#search').keyup(function(e) {
         let search = $('#search').val();
         if (!search) {
-            $('#container').empty();  
+            // Si no hay búsqueda, se muestran todos los productos
+            listarProductos();  // Línea agregada
             $('#product-result').hide();  
             return; 
         }
@@ -69,21 +71,45 @@ function buscarProducto() {
             data: { search },
             success: function(response) {
                 let products = JSON.parse(response);
-                let template = '';
+                let searchTemplate = '';
                 products.forEach(product => {
-                    template += `<li>${product.nombre}</li>`;
+                    searchTemplate += `<li>${product.nombre}</li>`;
                 });
 
-                $('#container').html(template);
-                if (template) {
+                $('#container').html(searchTemplate);
+                if (searchTemplate) {
                     $('#product-result').show();
                 } else {
                     $('#product-result').hide();
                 }
+
+                // Ahora actualizamos la tabla de productos
+                let productTableTemplate = '';  // Línea agregada
+                products.forEach(product => {  // Línea agregada
+                    let descripcion = '';  // Línea agregada
+                    descripcion += '<li>precio: '+product.precio+'</li>';  // Línea agregada
+                    descripcion += '<li>unidades: '+product.unidades+'</li>';  // Línea agregada
+                    descripcion += '<li>modelo: '+product.modelo+'</li>';  // Línea agregada
+                    descripcion += '<li>marca: '+product.marca+'</li>';  // Línea agregada
+                    descripcion += '<li>detalles: '+product.detalles+'</li>';  // Línea agregada
+
+                    productTableTemplate += `<tr productId="${product.id}">  // Línea agregada
+                        <td>${product.id}</td>
+                        <td>${product.nombre}</td>
+                        <td><ul>${descripcion}</ul></td>
+                        <td>
+                            <button class="product-delete btn btn-danger">
+                                Eliminar
+                            </button>
+                        </td>
+                    </tr>`;  // Línea agregada
+                });
+                $('#products').html(productTableTemplate);  // Línea agregada
             }
         });
     });
 }
+
 
 function agregarProducto() {
     $('#product-form').submit(function(e) {
@@ -134,5 +160,18 @@ function agregarProducto() {
                 alert("Error en la solicitud: " + error);
             }
         });
+    });
+}
+
+function eliminarProducto() {
+    $(document).on('click', '.product-delete', function() {
+        if(confirm('¿Seguro que desea eliminar este producto?')){
+            let element = $(this)[0].parentElement.parentElement;
+            let id = $(element).attr('productId');
+            $.get('backend/product-delete.php', {id}, function(response){
+                listarProductos();
+                //console.log(response);
+            })
+        }
     });
 }
