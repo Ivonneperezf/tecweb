@@ -124,13 +124,30 @@ function agregarProducto() {
             alert("Error: El JSON no está bien definido.");
             return;
         }
-
-        // Validaciones
         const nombre = $('#name').val().trim();
         const precio = productData.precio;
         const unidades = productData.unidades;
         const modelo = productData.modelo;
-
+        if (!nombre) {
+            alert("Inserte elnombre del product");
+            return;
+        }
+        if (!modelo || /[^a-zA-Z0-9-]/.test(modelo)) {
+            alert("El modelo no debe contener caracteres especiales");
+            return;
+        }
+        if (precio < 100) {
+            alert("El precio debe ser mayor 99.99");
+            return;
+        }
+        if (unidades < 0) {
+            alert("Las unidades no pueden ser menores a 0");
+            return;
+        }
+        if (!nombre || !modelo || !precio || !unidades || !productData.marca || !productData.detalles || !productData.imagen) {
+            alert("Datos incompletos. Inserte los datos correspondientes");
+            return;
+        }
         const postData = {
             nombre: nombre,
             marca: productData.marca,
