@@ -119,7 +119,8 @@ function agregarProducto() {
         
         const jsonData = $('#description').val();
         let productData;
-
+        $('#container').html("");
+        $('#product-result').hide();
         try {
             productData = JSON.parse(jsonData);
         } catch (error) {
@@ -131,23 +132,28 @@ function agregarProducto() {
         const unidades = productData.unidades;
         const modelo = productData.modelo;
         if (!nombre) {
-            alert("Inserte el nombre del producto");
+            $('#container').html("Inserte nombre");
+            $('#product-result').show();
             return;
         }
         if (!modelo || /[^a-zA-Z0-9-]/.test(modelo)) {
-            alert("El modelo no debe contener caracteres especiales");
+            $('#container').html("Inserte modelo");
+            $('#product-result').show();
             return;
         }
         if (precio < 100) {
-            alert("El precio debe ser mayor 99.99");
+            $('#container').html("Inserte precio");
+            $('#product-result').show();
             return;
         }
         if (unidades < 0) {
-            alert("Las unidades no pueden ser menores a 0");
+            $('#container').html("Inserte unidades");
+            $('#product-result').show();
             return;
         }
         if (!nombre || !modelo || !precio || !unidades || !productData.marca || !productData.detalles || !productData.imagen) {
-            alert("Datos incompletos. Inserte los datos correspondientes");
+            $('#container').html("Datos incompletos");
+            $('#product-result').show();
             return;
         }
         const postData = {
@@ -160,8 +166,6 @@ function agregarProducto() {
             detalles: productData.detalles,
             imagen: productData.imagen
         };
-        $('#container').html("");
-        $('#product-result').hide();
         let url = edit === false ? 'backend/product-add.php' : 'backend/product-edit.php';
         $.ajax({
             url: url,
