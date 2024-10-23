@@ -124,7 +124,6 @@ function agregarProducto() {
         try {
             productData = JSON.parse(jsonData);
         } catch (error) {
-            alert("Error: El JSON no está bien definido.");
             return;
         }
         const nombre = $('#name').val().trim();
@@ -132,27 +131,27 @@ function agregarProducto() {
         const unidades = productData.unidades;
         const modelo = productData.modelo;
         if (!nombre) {
-            $('#container').html("Inserte nombre");
+            $('#container').html("Error: Inserte nombre");
             $('#product-result').show();
             return;
         }
         if (!modelo || /[^a-zA-Z0-9-]/.test(modelo)) {
-            $('#container').html("Inserte modelo");
+            $('#container').html("Error: Inserte modelo");
             $('#product-result').show();
             return;
         }
         if (precio < 100) {
-            $('#container').html("Inserte precio");
+            $('#container').html("Error: Inserte precio");
             $('#product-result').show();
             return;
         }
         if (unidades < 0) {
-            $('#container').html("Inserte unidades");
+            $('#container').html("Error: Inserte unidades");
             $('#product-result').show();
             return;
         }
         if (!nombre || !modelo || !precio || !unidades || !productData.marca || !productData.detalles || !productData.imagen) {
-            $('#container').html("Datos incompletos");
+            $('#container').html("Error: Datos incompletos");
             $('#product-result').show();
             return;
         }
@@ -268,6 +267,7 @@ function editarProducto() {
 "detalles": "${detalles}", 
 "imagen": "${imagen}"
 }`;
+                edit = true;
                 $('#name').val(productData.nombre);
                 $('#description').val(desc);
                 $('#productId').val(productData.id);
