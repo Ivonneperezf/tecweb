@@ -37,8 +37,6 @@
                   <!-- <div id="nombre-error" style="color:red;"></div> -->
                 </div>
                 <div class="form-group">
-                  <form id="formularioProductos" action=""
-                    method="post" enctype="multipart/form-data">
                     <ul style="list-style-type: none;">
                       <li>
                         <label for="form-marca">Marca:</label>
@@ -91,7 +89,6 @@
                         </div>
                       </li>
                     </ul>
-                  </form>
                   <!-- <textarea class="form-control" id="description" cols="30" rows="10" placeholder="JSON de producto"></textarea> -->
                 </div>
                 <input type="hidden" id="productId">
@@ -131,7 +128,7 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
     <!-- Lógica del Frontend -->
-    <script src="js/app_fuc.js"></script>
+    <script src="js/app_function.js"></script>
     <script src="js/Valores.js"></script>
   </body>
 

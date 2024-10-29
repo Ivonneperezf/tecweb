@@ -79,19 +79,23 @@ function verificarUnidades(){
 }
 
 function verificarImagen() {
-    var inputImagen = $("#form-imagen").val();
-    var imgExistente = $("#imagenExistente").val();
+    var inputImagen = $("#form-imagen")[0];
+    var imgExistente = $("#imagenExistente")[0];
+    
     if (inputImagen.files && inputImagen.files[0]) {
         var file = inputImagen.files[0];
         var reader = new FileReader();
-        reader.onload = function (e) {
-            imgExistente.src = e.target.result;
+        
+        reader.onload = function(e) {
+            $(imgExistente).attr("src", e.target.result);
         };
+        
         reader.readAsDataURL(file);
     } else {
-        imgExistente.src = "<?= !empty($_POST['imagen']) ? $_POST['imagen'] : 'Default.png' ?>";
+        $(imgExistente).attr("src", "<?= !empty($_POST['imagen']) ? $_POST['imagen'] : 'Default.png' ?>");
     }
 }
+
 
 // function verificarImagenhtml() {
 //     var inputImagen = document.getElementById("form-imagen");
