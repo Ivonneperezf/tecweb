@@ -92,7 +92,7 @@
                   <!-- <textarea class="form-control" id="description" cols="30" rows="10" placeholder="JSON de producto"></textarea> -->
                 </div>
                 <input type="hidden" id="productId">
-                <button class="btn btn-primary btn-block text-center" type="submit">
+                <button class="btn btn-primary btn-block text-center" type="submit" onclick = "verificarImagen()">
                   Agregar Producto
                 </button>
               </form>
@@ -128,8 +128,8 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
     <!-- Lógica del Frontend -->
-    <script src="js/app_function.js"></script>
-    <script src="js/Valores.js"></script>
+    <script src="js/app_func.js"></script>
+    <script src="js/verVal.js"></script>
   </body>
 
 </html>

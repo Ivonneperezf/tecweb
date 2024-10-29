@@ -81,19 +81,22 @@ function verificarUnidades(){
 function verificarImagen() {
     var inputImagen = $("#form-imagen")[0];
     var imgExistente = $("#imagenExistente")[0];
-    
+    //alert(imgExistente);
+    var file = inputImagen.files[0];
+    const fileName = file ? file.name : "Default.png";
     if (inputImagen.files && inputImagen.files[0]) {
-        var file = inputImagen.files[0];
-        var reader = new FileReader();
-        
+        // var file = inputImagen.files[0];
+         var reader = new FileReader();
+        // const fileName = file ? file.name : "Default.png";
         reader.onload = function(e) {
             $(imgExistente).attr("src", e.target.result);
+            //alert("Nombre del archivo: " + fileName);
         };
         
         reader.readAsDataURL(file);
-    } else {
-        $(imgExistente).attr("src", "<?= !empty($_POST['imagen']) ? $_POST['imagen'] : 'Default.png' ?>");
-    }
+     } //else {
+    //     $(imgExistente).attr("src", "<?= !empty($_POST['imagen']) ? $_POST['imagen'] : 'Default.png' ?>");
+    // }
 }
 
 

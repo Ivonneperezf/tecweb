@@ -116,6 +116,10 @@ function agregarProducto() {
         e.preventDefault();
         $('#container').html("");
         $('#product-result').hide();
+        var inputImagen = $("#form-imagen")[0];
+        var file = inputImagen.files[0];
+        const fileName = file ? file.name : "Default.png";
+        alert(fileName);
         const postData = {
             id : $('#productId').val(),
             nombre: $('#name').val(),
@@ -124,9 +128,9 @@ function agregarProducto() {
             precio: $("#form-precio").val(),
             unidades: $("#form-unidades").val(),
             detalles: $("#form-detalles").val(),
-            imagen: $("#form-imagen")[0].files[0]
+            imagen: "img/"+fileName
         };
-        alert(postData.precio);
+        // alert(postData.modelo);
         let url = edit === false ? 'backend/product-add.php' : 'backend/product-edit.php';
         $.ajax({
             url: url,
@@ -134,7 +138,8 @@ function agregarProducto() {
             contentType: 'application/json',  
             data: JSON.stringify(postData),   
             success: function(response) {
-                //console.log(response);
+                console.log(response);
+                //let result = JSON.parse(response);
                 let result = typeof response === 'string' ? JSON.parse(response):response;
                 if (result.status === "success") {
                     listarProductos();  
