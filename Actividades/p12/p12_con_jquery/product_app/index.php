@@ -32,7 +32,9 @@
               <!-- FORMULARIO PARA AGREGAR PRODUCTO -->
               <form id="product-form">
                 <div class="form-group">
-                  <input class="form-control" type="text" id="name" placeholder="Nombre de producto">
+                  <input class="form-control" type="text" id="name" placeholder="Nombre de producto"
+                  value = "<?= !empty($_POST['nombre'])?$_POST['nombre']:''?>" oninput="verificarNombre()" required>
+                  <div id="nombre-error" style="color:red;"></div>
                 </div>
                 <div class="form-group">
                   <form id="formularioProductos" action=""
@@ -129,7 +131,8 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
     <!-- Lógica del Frontend -->
-    <script src="app_fuc.js"></script>
+    <script src="js/app_fuc.js"></script>
+    <script src="js/verificarValores.js"></script>
   </body>
 
 </html>
