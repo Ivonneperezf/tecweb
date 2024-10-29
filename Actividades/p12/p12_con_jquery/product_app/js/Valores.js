@@ -79,8 +79,8 @@ function verificarUnidades(){
 }
 
 function verificarImagen() {
-    var inputImagen = document.getElementById("form-imagen");
-    var imgExistente = document.getElementById("imagenExistente");
+    var inputImagen = $("#form-imagen").val();
+    var imgExistente = $("#imagenExistente").val();
     if (inputImagen.files && inputImagen.files[0]) {
         var file = inputImagen.files[0];
         var reader = new FileReader();
@@ -89,27 +89,27 @@ function verificarImagen() {
         };
         reader.readAsDataURL(file);
     } else {
-        imgExistente.src = "<?= !empty($_POST['imagen']) ? $_POST['imagen'] : 'imagenPorDefecto.png' ?>";
+        imgExistente.src = "<?= !empty($_POST['imagen']) ? $_POST['imagen'] : 'Default.png' ?>";
     }
 }
 
-function verificarImagenhtml() {
-    var inputImagen = document.getElementById("form-imagen");
-    var imgExistente = document.getElementById("imagenExistente");
+// function verificarImagenhtml() {
+//     var inputImagen = document.getElementById("form-imagen");
+//     var imgExistente = document.getElementById("imagenExistente");
 
-    if (inputImagen.files && inputImagen.files[0]) {
-        var file = inputImagen.files[0];
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            imgExistente.src = e.target.result;
-            imgExistente.style.display = 'block'; 
-        };
-        reader.readAsDataURL(file);
-    } else {
-        imgExistente.src = "";
-        imgExistente.style.display = 'none'; 
-    }
-}
+//     if (inputImagen.files && inputImagen.files[0]) {
+//         var file = inputImagen.files[0];
+//         var reader = new FileReader();
+//         reader.onload = function (e) {
+//             imgExistente.src = e.target.result;
+//             imgExistente.style.display = 'block'; 
+//         };
+//         reader.readAsDataURL(file);
+//     } else {
+//         imgExistente.src = "";
+//         imgExistente.style.display = 'none'; 
+//     }
+// }
 
 function verificarCampo(idCampo, nombCampo){
     if ($.trim($("#"+idCampo).val()) === ""){
