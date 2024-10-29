@@ -119,7 +119,7 @@ function agregarProducto() {
         var inputImagen = $("#form-imagen")[0];
         var file = inputImagen.files[0];
         const fileName = file ? file.name : "Default.png";
-        alert(fileName);
+        //alert(fileName);
         const postData = {
             id : $('#productId').val(),
             nombre: $('#name').val(),
@@ -138,7 +138,7 @@ function agregarProducto() {
             contentType: 'application/json',  
             data: JSON.stringify(postData),   
             success: function(response) {
-                console.log(response);
+                //console.log(response);
                 //let result = JSON.parse(response);
                 let result = typeof response === 'string' ? JSON.parse(response):response;
                 if (result.status === "success") {
