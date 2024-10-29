@@ -33,7 +33,7 @@
               <form id="product-form">
                 <div class="form-group">
                   <input class="form-control" type="text" id="name" placeholder="Nombre de producto"
-                  value = "<?= !empty($_POST['nombre'])?$_POST['nombre']:''?>" oninput="verificarNombre()" required>
+                  value = "<?= !empty($_POST['nombre'])?$_POST['nombre']:''?>" oninput="verificarNombre()" onfocus = "verificarCampo('name', 'nombre')" required>
                   <!-- <div id="nombre-error" style="color:red;"></div> -->
                 </div>
                 <div class="form-group">
@@ -63,18 +63,18 @@
                         <!-- <div id="marca-error" style="color:red;"></div> -->
                       </li>
                       <li>
-                        <label for="form-modelo">Modelo:</label><input type="text" name="modelo" id="form-modelo" oninput="verificarModelo()"
+                        <label for="form-modelo">Modelo:</label><input type="text" name="modelo" id="form-modelo" oninput="verificarModelo()" onfocus = "verificarCampo('form-modelo', 'modelo')"
                         value = "<?= !empty($_POST['modelo'])?$_POST['modelo']:''?>" required>
                         <!-- <div id="modelo-error" style="color:red;"></div> -->
                       </li>
                       <li>
-                        <label for="form-precio">Precio:</label><input type="number" name="precio" id="form-precio" step="0.01" oninput="verificarPrecio()" 
+                        <label for="form-precio">Precio:</label><input type="number" name="precio" id="form-precio" step="0.01" oninput="verificarPrecio()" onfocus = "verificarCampo('form-precio', 'precio')"
                         value = "<?= !empty($_POST['precio'])?$_POST['precio']:''?>" required>
                         <!-- <div id="precio-error" style="color:red;"></div> -->
                       </li>
                       <li>
                         <label for="form-unidades">Unidades:</label><input type="number" name="unidades" id="form-unidades" 
-                        value = "<?= !empty($_POST['unidades'])?$_POST['unidades']:''?>" required oninput="verificarUnidades()">
+                        value = "<?= !empty($_POST['unidades'])?$_POST['unidades']:''?>" required oninput="verificarUnidades()" onfocus = "verificarCampo('form-unidades', 'unidades')">
                         <!-- <div id="unidades-error" style="color:red;"></div> -->
                       </li>
                       <li>

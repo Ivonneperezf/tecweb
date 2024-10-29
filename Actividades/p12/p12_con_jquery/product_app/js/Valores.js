@@ -110,3 +110,11 @@ function verificarImagenhtml() {
         imgExistente.style.display = 'none'; 
     }
 }
+
+function verificarCampo(idCampo, nombCampo){
+    if ($.trim($("#"+idCampo).val()) === ""){
+        $("#container").html("Por favor, inserte el campo "+nombCampo); $('#product-result').show();
+    }else{
+        $("#container").html(""); $('#product-result').hide();
+    }
+}
