@@ -34,7 +34,7 @@
                 <div class="form-group">
                   <input class="form-control" type="text" id="name" placeholder="Nombre de producto"
                   value = "<?= !empty($_POST['nombre'])?$_POST['nombre']:''?>" oninput="verificarNombre()" required>
-                  <div id="nombre-error" style="color:red;"></div>
+                  <!-- <div id="nombre-error" style="color:red;"></div> -->
                 </div>
                 <div class="form-group">
                   <form id="formularioProductos" action=""
@@ -60,28 +60,28 @@
                             <option value="Ralph Lauren"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Ralph Lauren') ? 'selected' : '' ?>>Ralph Lauren</option>
                             <option value="Burberry"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Burberry') ? 'selected' : '' ?>>Burberry</option>
                         </select>
-                        <div id="marca-error" style="color:red;"></div>
+                        <!-- <div id="marca-error" style="color:red;"></div> -->
                       </li>
                       <li>
                         <label for="form-modelo">Modelo:</label><input type="text" name="modelo" id="form-modelo" oninput="verificarModelo()"
                         value = "<?= !empty($_POST['modelo'])?$_POST['modelo']:''?>" required>
-                        <div id="modelo-error" style="color:red;"></div>
+                        <!-- <div id="modelo-error" style="color:red;"></div> -->
                       </li>
                       <li>
                         <label for="form-precio">Precio:</label><input type="number" name="precio" id="form-precio" step="0.01" oninput="verificarPrecio()" 
                         value = "<?= !empty($_POST['precio'])?$_POST['precio']:''?>" required>
-                        <div id="precio-error" style="color:red;"></div>
+                        <!-- <div id="precio-error" style="color:red;"></div> -->
                       </li>
                       <li>
                         <label for="form-unidades">Unidades:</label><input type="number" name="unidades" id="form-unidades" 
                         value = "<?= !empty($_POST['unidades'])?$_POST['unidades']:''?>" required oninput="verificarUnidades()">
-                        <div id="unidades-error" style="color:red;"></div>
+                        <!-- <div id="unidades-error" style="color:red;"></div> -->
                       </li>
                       <li>
                         <label for="form-detalles">Detalles:</label><br>
                         <textarea name="detalles" rows="4" cols="35" id="form-detalles" placeholder="Detalles adicionales" 
                         oninput="verificarDetalles()"><?= !empty($_POST['detalles']) ? htmlspecialchars($_POST['detalles']) : '' ?></textarea>
-                        <div id="detalles-error" style="color:red;"></div>
+                        <!-- <div id="detalles-error" style="color:red;"></div> -->
                       </li>
                       <li>
                         <label for="form-imagen">Imagen:</label> 
@@ -109,7 +109,7 @@
           <!--div class="card my-4 d-none" id="product-result"-->
             <div class="card-body">
               <!-- RESULTADO -->
-              <ul id="container"></ul>
+              <ul id="container" style="list-style-type: none;"></ul>
             </div>
           </div>
 
@@ -132,7 +132,7 @@
       crossorigin="anonymous"></script>
     <!-- Lógica del Frontend -->
     <script src="js/app_fuc.js"></script>
-    <script src="js/verificarValores.js"></script>
+    <script src="js/Valores.js"></script>
   </body>
 
 </html>
