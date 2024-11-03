@@ -114,55 +114,23 @@ function buscarProducto() {
 function agregarProducto() {
     $('#product-form').submit(function(e) {
         e.preventDefault();
-        
-        const jsonData = $('#description').val();
-        let productData;
         $('#container').html("");
         $('#product-result').hide();
-        try {
-            productData = JSON.parse(jsonData);
-        } catch (error) {
-            return;
-        }
-        const nombre = $('#name').val().trim();
-        const precio = productData.precio;
-        const unidades = productData.unidades;
-        const modelo = productData.modelo;
-        if (!nombre) {
-            $('#container').html("Error: Inserte nombre");
-            $('#product-result').show();
-            return;
-        }
-        if (!modelo || /[^a-zA-Z0-9-]/.test(modelo)) {
-            $('#container').html("Error: Inserte modelo");
-            $('#product-result').show();
-            return;
-        }
-        if (precio < 100) {
-            $('#container').html("Error: Inserte precio");
-            $('#product-result').show();
-            return;
-        }
-        if (unidades < 0) {
-            $('#container').html("Error: Inserte unidades");
-            $('#product-result').show();
-            return;
-        }
-        if (!nombre || !modelo || !precio || !unidades || !productData.marca || !productData.detalles || !productData.imagen) {
-            $('#container').html("Error: Datos incompletos");
-            $('#product-result').show();
-            return;
-        }
+        var inputImagen = $("#form-imagen")[0];
+        var file = inputImagen.files[0];
+        const fileName = file ? file.name : "Default.png";
+        //alert(fileName);
         const postData = {
             id : $('#productId').val(),
-            nombre: nombre,
-            marca: productData.marca,
-            modelo: modelo,
-            precio: precio,
-            unidades: unidades,
-            detalles: productData.detalles,
-            imagen: productData.imagen
+            nombre: $('#name').val(),
+            marca: $("#form-marca").val(),
+            modelo: $("#form-modelo").val(),
+            precio: $("#form-precio").val(),
+            unidades: $("#form-unidades").val(),
+            detalles: $("#form-detalles").val(),
+            imagen: "img/"+fileName
         };
+        // alert(postData.modelo);
         let url = edit === false ? 'backend/product-add.php' : 'backend/product-edit.php';
         $.ajax({
             url: url,
@@ -171,6 +139,7 @@ function agregarProducto() {
             data: JSON.stringify(postData),   
             success: function(response) {
                 //console.log(response);
+                //let result = JSON.parse(response);
                 let result = typeof response === 'string' ? JSON.parse(response):response;
                 if (result.status === "success") {
                     listarProductos();  

@@ -1,7 +1,8 @@
 function verificarNombre() {
+    removerResaltado("name");
     var nombre = $("#name").val();$('#product-result').hide();
     if ($.trim(nombre) === "") {
-        $("#container").html("Por favor inserte un nombre"); $('#product-result').show();
+        $("#container").html("Por favor, inserte el nombre del producto."); $('#product-result').show();
         return false;
     } else if (nombre.length > 100) {
         $("#container").html("El nombre es demasiado largo"); $('#product-result').show();
@@ -13,8 +14,9 @@ function verificarNombre() {
 }
 
 function verificarMarca() {
+    removerResaltado("form-marca");
     if ($("#form-marca").val() === "") {
-        $("#container").html("Por favor, selecciona una marca."); $('#product-result').show();
+        $("#container").html("Por favor, selecciona la marca del producto."); $('#product-result').show();
         return false; 
     } else {
         $("#container").html(""); $('#product-result').hide();
@@ -23,9 +25,10 @@ function verificarMarca() {
 }
 
 function verificarModelo(){
+    removerResaltado("form-modelo");
     var modelo = $("#form-modelo").val();$('#product-result').hide();
     if ($.trim(modelo) === "") {
-        $("#container").html("Por favor, agregue el modelo del producto."); $('#product-result').show();
+        $("#container").html("Por favor, inserte el modelo del producto."); $('#product-result').show();
         return false; 
     } else if (modelo.length > 25) {
         $("#container").html("El modelo es demasiado largo."); $('#product-result').show();
@@ -40,8 +43,9 @@ function verificarModelo(){
 }
 
 function verificarPrecio() {
+    removerResaltado("form-precio");
     if ($("#form-precio").val() === "") {
-        $("#container").html("Inserte el precio"); $('#product-result').show();
+        $("#container").html("Por favor, inserte el precio del producto."); $('#product-result').show();
         return false; 
     } else if (parseFloat($("#form-precio").val()) < 99.99) {
         $("#container").html("El precio debe de ser mayor a 99.99"); $('#product-result').show();
@@ -53,6 +57,7 @@ function verificarPrecio() {
 }
 
 function verificarDetalles(){
+    removerResaltado("form-detalles");
     if ($.trim($("#form-detalles").val()) === "") {
         $("#container").html(""); $('#product-result').hide(); 
         return true;
@@ -66,8 +71,9 @@ function verificarDetalles(){
 }
 
 function verificarUnidades(){
+    removerResaltado("form-unidades");
     if ($.trim($("#form-unidades").val()) === "") {
-        $("#container").html("Inserte las unidades"); $('#product-result').show(); 
+        $("#container").html("Por favor, inserte las unidades disponibles del producto."); $('#product-result').show(); 
         return false;
     } else if (parseInt($("#form-unidades").val()) <= 0) {
         $("#container").html("Debe de haber al menos una unidad"); $('#product-result').show(); 
@@ -81,47 +87,40 @@ function verificarUnidades(){
 function verificarImagen() {
     var inputImagen = $("#form-imagen")[0];
     var imgExistente = $("#imagenExistente")[0];
-    //alert(imgExistente);
     var file = inputImagen.files[0];
     const fileName = file ? file.name : "Default.png";
     if (inputImagen.files && inputImagen.files[0]) {
-        // var file = inputImagen.files[0];
          var reader = new FileReader();
-        // const fileName = file ? file.name : "Default.png";
         reader.onload = function(e) {
             $(imgExistente).attr("src", e.target.result);
-            //alert("Nombre del archivo: " + fileName);
         };
-        
         reader.readAsDataURL(file);
-     } //else {
-    //     $(imgExistente).attr("src", "<?= !empty($_POST['imagen']) ? $_POST['imagen'] : 'Default.png' ?>");
-    // }
+     } 
 }
 
-
-// function verificarImagenhtml() {
-//     var inputImagen = document.getElementById("form-imagen");
-//     var imgExistente = document.getElementById("imagenExistente");
-
-//     if (inputImagen.files && inputImagen.files[0]) {
-//         var file = inputImagen.files[0];
-//         var reader = new FileReader();
-//         reader.onload = function (e) {
-//             imgExistente.src = e.target.result;
-//             imgExistente.style.display = 'block'; 
-//         };
-//         reader.readAsDataURL(file);
-//     } else {
-//         imgExistente.src = "";
-//         imgExistente.style.display = 'none'; 
-//     }
-// }
-
-function verificarCampo(idCampo, nombCampo){
-    if ($.trim($("#"+idCampo).val()) === ""){
-        $("#container").html("Por favor, inserte el campo "+nombCampo); $('#product-result').show();
+function verificarCampo(idCampo, requerido){
+    if (requerido){
+        if ($.trim($("#"+idCampo).val()) === ""){
+            $("#container").html("Por favor, inserte los campos vacios"); $('#product-result').show();
+            $("#" + idCampo).addClass("campo-vacio");
+        }else{
+            $("#container").html(""); $('#product-result').hide();
+            $("#" + idCampo).removeClass("campo-vacio");
+        }
     }else{
         $("#container").html(""); $('#product-result').hide();
     }
+}
+
+function verificarTodosLosCampos(){
+    verificarCampo('name',true);
+    verificarCampo('form-marca',true);
+    verificarCampo('form-modelo',true);
+    verificarCampo('form-precio',true);
+    verificarCampo('form-unidades',true);
+    verificarImagen();
+}
+
+function removerResaltado(idCampo) {
+    $("#" + idCampo).removeClass("campo-vacio");
 }

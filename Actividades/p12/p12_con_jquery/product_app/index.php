@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title>ProductApp</title>
+    <style>
+      .campo-vacio {
+        border: 1px solid red;
+        background-color: #ffe6e6; /* Color de fondo rojo claro */
+      }
+    </style>
     <!-- BOOTSTRAP 4  -->
     <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
   </head>
@@ -30,17 +36,17 @@
           <div class="card">
             <div class="card-body">
               <!-- FORMULARIO PARA AGREGAR PRODUCTO -->
-              <form id="product-form">
+              <form id="product-form" onsubmit="return verificarTodosLosCampos()">
                 <div class="form-group">
                   <input class="form-control" type="text" id="name" placeholder="Nombre de producto"
-                  value = "<?= !empty($_POST['nombre'])?$_POST['nombre']:''?>" oninput="verificarNombre()" onfocus = "verificarCampo('name', 'nombre')" required>
+                  value = "<?= !empty($_POST['nombre'])?$_POST['nombre']:''?>" oninput="verificarNombre()" onfocus = "verificarNombre()" required>
                   <!-- <div id="nombre-error" style="color:red;"></div> -->
                 </div>
                 <div class="form-group">
                     <ul style="list-style-type: none;">
                       <li>
                         <label for="form-marca">Marca:</label>
-                        <select name="marca" id="form-marca" required onchange="verificarMarca()">
+                        <select name="marca" id="form-marca" required onchange="verificarMarca()" onfocus = "verificarMarca()">
                             <option value="">Selecciona una marca</option>
                             <option value="Nautica" <?= (isset($_POST['marca']) && $_POST['marca'] === 'Nautica') ? 'selected' : '' ?>>Nautica</option>
                             <option value="Mango"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Mango') ? 'selected' : '' ?>>Mango</option>
@@ -61,29 +67,29 @@
                         <!-- <div id="marca-error" style="color:red;"></div> -->
                       </li>
                       <li>
-                        <label for="form-modelo">Modelo:</label><input type="text" name="modelo" id="form-modelo" oninput="verificarModelo()" onfocus = "verificarCampo('form-modelo', 'modelo')"
+                        <label for="form-modelo">Modelo:</label><input type="text" name="modelo" id="form-modelo" oninput="verificarModelo()" onfocus = "verificarModelo()"
                         value = "<?= !empty($_POST['modelo'])?$_POST['modelo']:''?>" required>
                         <!-- <div id="modelo-error" style="color:red;"></div> -->
                       </li>
                       <li>
-                        <label for="form-precio">Precio:</label><input type="number" name="precio" id="form-precio" step="0.01" oninput="verificarPrecio()" onfocus = "verificarCampo('form-precio', 'precio')"
+                        <label for="form-precio">Precio:</label><input type="number" name="precio" id="form-precio" step="0.01" oninput="verificarPrecio()" onfocus = "verificarPrecio()"
                         value = "<?= !empty($_POST['precio'])?$_POST['precio']:''?>" required>
                         <!-- <div id="precio-error" style="color:red;"></div> -->
                       </li>
                       <li>
                         <label for="form-unidades">Unidades:</label><input type="number" name="unidades" id="form-unidades" 
-                        value = "<?= !empty($_POST['unidades'])?$_POST['unidades']:''?>" required oninput="verificarUnidades()" onfocus = "verificarCampo('form-unidades', 'unidades')">
+                        value = "<?= !empty($_POST['unidades'])?$_POST['unidades']:''?>" required oninput="verificarUnidades()" onfocus = "verificarUnidades()">
                         <!-- <div id="unidades-error" style="color:red;"></div> -->
                       </li>
                       <li>
                         <label for="form-detalles">Detalles:</label><br>
                         <textarea name="detalles" rows="4" cols="35" id="form-detalles" placeholder="Detalles adicionales" 
-                        oninput="verificarDetalles()"><?= !empty($_POST['detalles']) ? htmlspecialchars($_POST['detalles']) : '' ?></textarea>
+                         oninput="verificarDetalles()" onfocus = "verificarDetalles()"><?= !empty($_POST['detalles']) ? htmlspecialchars($_POST['detalles']) : '' ?></textarea>
                         <!-- <div id="detalles-error" style="color:red;"></div> -->
                       </li>
                       <li>
                         <label for="form-imagen">Imagen:</label> 
-                        <input type="file" name="imagen" id="form-imagen" accept="image/*" onchange="verificarImagen()">
+                        <input type="file" name="imagen" id="form-imagen" accept="image/*">
                         <div id="imgExistente">
                             <img id="imagenExistente" src="<?= !empty($_POST['imagen'])?$_POST['imagen']:''?>"  width="100">
                         </div>
@@ -92,7 +98,7 @@
                   <!-- <textarea class="form-control" id="description" cols="30" rows="10" placeholder="JSON de producto"></textarea> -->
                 </div>
                 <input type="hidden" id="productId">
-                <button class="btn btn-primary btn-block text-center" type="submit" onclick = "verificarImagen()">
+                <button class="btn btn-primary btn-block text-center" type="submit" onclick = "verificarTodosLosCampos()">
                   Agregar Producto
                 </button>
               </form>
@@ -128,8 +134,8 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
     <!-- Lógica del Frontend -->
-    <script src="js/app_func.js"></script>
-    <script src="js/verVal.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/verificarValores.js"></script>
   </body>
 
 </html>
