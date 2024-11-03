@@ -1,13 +1,3 @@
-// JSON BASE A MOSTRAR EN FORMULARIO
-// var baseJSON = {
-//     "precio": 0.0,
-//     "unidades": 1,
-//     "modelo": "XX-000",
-//     "marca": "NA",
-//     "detalles": "NA",
-//     "imagen": "img/default.png"
-//   };
-
 var edit = false;
 
 function init() {
@@ -116,36 +106,56 @@ function agregarProducto() {
         e.preventDefault();
         $('#container').html("");
         $('#product-result').hide();
-        var inputImagen = $("#form-imagen")[0];
-        var file = inputImagen.files[0];
-        const fileName = file ? file.name : "Default.png";
-        //alert(fileName);
-        const postData = {
-            id : $('#productId').val(),
+
+        // Crear el objeto JSON con los datos del formulario
+        let dataJson = {
             nombre: $('#name').val(),
             marca: $("#form-marca").val(),
             modelo: $("#form-modelo").val(),
             precio: $("#form-precio").val(),
             unidades: $("#form-unidades").val(),
-            detalles: $("#form-detalles").val(),
-            imagen: "img/"+fileName
+            detalles: $("#form-detalles").val()
         };
-        // alert(postData.modelo);
+
         let url = edit === false ? 'backend/product-add.php' : 'backend/product-edit.php';
+
+        // Enviar los datos en JSON primero
         $.ajax({
             url: url,
             type: 'POST',
-            contentType: 'application/json',  
-            data: JSON.stringify(postData),   
+            contentType: 'application/json',
+            data: JSON.stringify(dataJson),
             success: function(response) {
-                //console.log(response);
-                //let result = JSON.parse(response);
-                let result = typeof response === 'string' ? JSON.parse(response):response;
+                let result = typeof response === 'string' ? JSON.parse(response) : response;
                 if (result.status === "success") {
-                    listarProductos();  
+                    listarProductos();
                     $('#product-form').trigger('reset');
-                    $('#description').val(JSON.stringify(baseJSON, null, 2));  
+                    $('#imagenExistente').hide();
+
+                    // Si hay imagen y no estamos en modo de edición, subirla con FormData
+                    var inputImagen = $("#form-imagen")[0];
+                    var file = inputImagen.files[0];
+                    if (file && !edit) {
+                        var formData = new FormData();
+                        formData.append("imagen", file);
+                        
+                        $.ajax({
+                            url: 'backend/upload-image.php',  // Endpoint separado para la imagen
+                            type: 'POST',
+                            processData: false,
+                            contentType: false,
+                            data: formData,
+                            success: function(imgResponse) {
+                                let imgResult = typeof imgResponse === 'string' ? JSON.parse(imgResponse) : imgResponse;
+                                $('#container').append("Imagen subida: " + imgResult.message + "<br>");
+                            },
+                            error: function(xhr, status, error) {
+                                alert("Error en la subida de imagen: " + error);
+                            }
+                        });
+                    }
                 }
+
                 $('#container').append("Status: " + result.status + "<br>");
                 $('#container').append("Message: " + result.message + "<br>");
                 $('#product-result').show();
@@ -156,6 +166,7 @@ function agregarProducto() {
         });
     });
 }
+
 
 function eliminarProducto() {
     $(document).on('click', '.product-delete', function() {
@@ -170,7 +181,6 @@ function eliminarProducto() {
                 $('#container').append("Status: " + result.status + "<br>");
                 $('#container').append("Message: " + result.message + "<br>");
                 $('#product-result').show();
-                //console.log(response);
             })
         }
     });
@@ -226,20 +236,16 @@ function editarProducto() {
             contentType: 'application/json',
             data: JSON.stringify(productData),
             success: function(response) {
-                let desc = `{
-"precio": ${precio}, 
-"unidades": ${unidades}, 
-"modelo": "${modelo}", 
-"marca": "${marca}", 
-"detalles": "${detalles}", 
-"imagen": "${imagen}"
-}`;
                 edit = true;
                 $('#name').val(productData.nombre);
-                $('#description').val(desc);
+                $('#form-marca').val(productData.marca);
+                $('#form-modelo').val(productData.modelo);
+                $('#form-precio').val(productData.precio);
+                $('#form-unidades').val(productData.unidades);
+                $('#form-detalles').val(productData.detalles);
+                $('#imagenExistente').attr('src', productData.imagen);
                 $('#productId').val(productData.id);
-                document.getElementById("description").value = JsonString;
-                document.getElementById("name").value("");
+                $('#imagenExistente').show();
 
                 let result  = typeof response === 'string' ? JSON.parse(response) : response;
                 $('#container').append("Status: " + result.status + "<br>");

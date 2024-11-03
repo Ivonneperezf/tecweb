@@ -85,17 +85,33 @@ function verificarUnidades(){
 }
 
 function verificarImagen() {
-    var inputImagen = $("#form-imagen")[0];
-    var imgExistente = $("#imagenExistente")[0];
-    var file = inputImagen.files[0];
-    const fileName = file ? file.name : "Default.png";
-    if (inputImagen.files && inputImagen.files[0]) {
-         var reader = new FileReader();
-        reader.onload = function(e) {
-            $(imgExistente).attr("src", e.target.result);
+    var $inputImagen = $("#form-imagen");
+    var $imgExistente = $("#imagenExistente");
+
+    if ($inputImagen[0].files && $inputImagen[0].files[0]) {
+        var file = $inputImagen[0].files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $imgExistente.attr("src", e.target.result);
         };
         reader.readAsDataURL(file);
-     } 
+    } else {
+        $imgExistente.attr("src", "<?= !empty($_POST['imagen']) ? $_POST['imagen'] : 'imagenPorDefecto.png' ?>");
+    }
+    // var inputImagen = $("#form-imagen")[0];
+    // var imgExistente = $("#imagenExistente")[0];
+    // var file = inputImagen.files[0];
+
+    // if (file) {
+    //     var reader = new FileReader();
+    //     reader.onload = function(e) {
+    //         $("#imagenExistente").attr("src", e.target.result);
+    //     };
+    //     reader.readAsDataURL(file);
+    // } else {
+    //     $("#imagenExistente").attr("src", 'img/Default.png');
+    // }
+    // $('#imagenExistente').show();
 }
 
 function verificarCampo(idCampo, requerido){
@@ -123,4 +139,8 @@ function verificarTodosLosCampos(){
 
 function removerResaltado(idCampo) {
     $("#" + idCampo).removeClass("campo-vacio");
+}
+
+function borrarContenido() {
+    $("#container").html(""); $('#product-result').hide();
 }

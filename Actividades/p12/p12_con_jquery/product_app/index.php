@@ -24,7 +24,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto"></ul>
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" name="search" id="search" type="search" placeholder="ID, marca o descripción" aria-label="Search">
+            <input class="form-control mr-sm-2" name="search" id="search" type="search" placeholder="ID, marca o descripción" aria-label="Search" onfocus = "borrarContenido()">
             <button class="btn btn-success my-2 my-sm-0" type="submit" >Buscar</button>
           </form>
       </div>
@@ -36,7 +36,7 @@
           <div class="card">
             <div class="card-body">
               <!-- FORMULARIO PARA AGREGAR PRODUCTO -->
-              <form id="product-form" onsubmit="return verificarTodosLosCampos()">
+              <form id="product-form" enctype="multipart/form-data" onsubmit="return verificarTodosLosCampos()">
                 <div class="form-group">
                   <input class="form-control" type="text" id="name" placeholder="Nombre de producto"
                   value = "<?= !empty($_POST['nombre'])?$_POST['nombre']:''?>" oninput="verificarNombre()" onfocus = "verificarNombre()" required>
@@ -89,7 +89,7 @@
                       </li>
                       <li>
                         <label for="form-imagen">Imagen:</label> 
-                        <input type="file" name="imagen" id="form-imagen" accept="image/*">
+                        <input type="file" name="imagen" id="form-imagen" accept="image/*" onchange = "verificarImagen()">
                         <div id="imgExistente">
                             <img id="imagenExistente" src="<?= !empty($_POST['imagen'])?$_POST['imagen']:''?>"  width="100">
                         </div>
