@@ -106,25 +106,39 @@ function agregarProducto() {
         e.preventDefault();
         $('#container').html("");
         $('#product-result').hide();
-
-        // Crear el objeto JSON con los datos del formulario
-        let dataJson = {
-            nombre: $('#name').val(),
-            marca: $("#form-marca").val(),
-            modelo: $("#form-modelo").val(),
-            precio: $("#form-precio").val(),
-            unidades: $("#form-unidades").val(),
-            detalles: $("#form-detalles").val()
-        };
-
+        var inputImagen = $("#form-imagen")[0];
+        var file = inputImagen.files[0];
+        const fileName = file ? file.name : "Default.png";
+        let postData;
+        if (edit){
+            postData = {
+                id : $('#productId').val(),
+                nombre: $('#name').val(),
+                marca: $("#form-marca").val(),
+                modelo: $("#form-modelo").val(),
+                precio: $("#form-precio").val(),
+                unidades: $("#form-unidades").val(),
+                detalles: $("#form-detalles").val(),
+                imagen: $('#imagenExistente').attr('src').trim()
+            };
+        }else{
+            postData = {
+                id : $('#productId').val(),
+                nombre: $('#name').val(),
+                marca: $("#form-marca").val(),
+                modelo: $("#form-modelo").val(),
+                precio: $("#form-precio").val(),
+                unidades: $("#form-unidades").val(),
+                detalles: $("#form-detalles").val(),
+                imagen: "img/"+fileName
+            };
+        }
         let url = edit === false ? 'backend/product-add.php' : 'backend/product-edit.php';
-
-        // Enviar los datos en JSON primero
         $.ajax({
             url: url,
             type: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify(dataJson),
+            data: JSON.stringify(postData),
             success: function(response) {
                 let result = typeof response === 'string' ? JSON.parse(response) : response;
                 if (result.status === "success") {
@@ -133,27 +147,27 @@ function agregarProducto() {
                     $('#imagenExistente').hide();
 
                     // Si hay imagen y no estamos en modo de edición, subirla con FormData
-                    var inputImagen = $("#form-imagen")[0];
-                    var file = inputImagen.files[0];
-                    if (file && !edit) {
-                        var formData = new FormData();
-                        formData.append("imagen", file);
-                        
-                        $.ajax({
-                            url: 'backend/upload-image.php',  // Endpoint separado para la imagen
-                            type: 'POST',
-                            processData: false,
-                            contentType: false,
-                            data: formData,
-                            success: function(imgResponse) {
-                                let imgResult = typeof imgResponse === 'string' ? JSON.parse(imgResponse) : imgResponse;
-                                $('#container').append("Imagen subida: " + imgResult.message + "<br>");
-                            },
-                            error: function(xhr, status, error) {
-                                alert("Error en la subida de imagen: " + error);
-                            }
-                        });
-                    }
+                    // var inputImagen = $("#form-imagen")[0];
+                    // var file = inputImagen.files[0];
+                    //if (file && !edit) {
+                        // var formData = new FormData();
+                        // formData.append("imagen", file);
+                        // $.ajax({
+                        //     url: 'backend/upload-image.php',  // Endpoint separado para la imagen
+                        //     type: 'POST',
+                        //     processData: false,
+                        //     contentType: false,
+                        //     data: formData,
+                        //     success: function(imgResponse) {
+                        //         let imgResult = typeof imgResponse === 'string' ? JSON.parse(imgResponse) : imgResponse;
+                        //         $('#container').append("Status: " + imgResult.status + "<br>");
+                        //         $('#container').append("Message: " + imgResult.message + "<br>");
+                        //     },
+                        //     error: function(xhr, status, error) {
+                        //         alert("Error en la subida de imagen: " + error);
+                        //     }
+                        // });
+                    //}
                 }
 
                 $('#container').append("Status: " + result.status + "<br>");
@@ -166,7 +180,6 @@ function agregarProducto() {
         });
     });
 }
-
 
 function eliminarProducto() {
     $(document).on('click', '.product-delete', function() {
