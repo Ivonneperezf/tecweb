@@ -1,17 +1,55 @@
 function verificarNombre() {
     removerResaltado("name");
-    var nombre = $("#name").val();$('#product-result').hide();
+    var nombre = $("#name").val();
+    $('#product-result').hide();
+
+    // Validación del nombre del producto
     if ($.trim(nombre) === "") {
-        $("#container").html("Por favor, inserte el nombre del producto."); $('#product-result').show();
+        $("#container").html("Por favor, inserte el nombre del producto.");
+        $('#product-result').show();
         return false;
     } else if (nombre.length > 100) {
-        $("#container").html("El nombre es demasiado largo"); $('#product-result').show();
+        $("#container").html("El nombre es demasiado largo");
+        $('#product-result').show();
         return false;
     } else {
-        $("#container").html(""); $('#product-result').hide();
-        return true;
+        $("#container").html("");
+        $('#product-result').hide();
+
+        // Si el campo no está vacío y tiene una longitud adecuada, realiza la verificación asíncrona
+        $.ajax({
+            url: 'backend/verify-product-name.php', // Cambia esto a la URL del archivo PHP que verificará el nombre
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ nombre: nombre }), // Envía el nombre como JSON
+            success: function(response) {
+                // Asegúrate de que la respuesta sea JSON
+                if (typeof response === 'string') {
+                    response = JSON.parse(response);
+                }
+
+                // Verifica si el nombre ya existe
+                if (response.status === 'exists') {
+                    $("#container").html("El nombre del producto ya existe. Por favor, elija otro nombre.");
+                    $('#product-result').show();
+                    return false; // Indica que el nombre no es válido
+                } else {
+                    $("#container").html(""); // Limpia el mensaje
+                    $('#product-result').hide();
+                    return true; // El nombre es válido
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la verificación del nombre: " + error);
+                $("#container").html("Ocurrió un error al verificar el nombre del producto.");
+                $('#product-result').show();
+                return false; // Indica un error en la verificación
+            }
+        });
+        return true; 
     }
 }
+
 
 function verificarMarca() {
     removerResaltado("form-marca");
@@ -85,33 +123,20 @@ function verificarUnidades(){
 }
 
 function verificarImagen() {
-    var $inputImagen = $("#form-imagen");
-    var $imgExistente = $("#imagenExistente");
+    var inputImagen = $("#form-imagen")[0];
+    var imgExistente = $("#imagenExistente")[0];
+    var file = inputImagen.files[0];
 
-    if ($inputImagen[0].files && $inputImagen[0].files[0]) {
-        var file = $inputImagen[0].files[0];
+    if (file) {
         var reader = new FileReader();
-        reader.onload = function (e) {
-            $imgExistente.attr("src", e.target.result);
+        reader.onload = function(e) {
+            $("#imagenExistente").attr("src", e.target.result);
         };
         reader.readAsDataURL(file);
     } else {
-        $imgExistente.attr("src", "<?= !empty($_POST['imagen']) ? $_POST['imagen'] : 'imagenPorDefecto.png' ?>");
+        $("#imagenExistente").attr("src", 'img/Default.png');
     }
-    // var inputImagen = $("#form-imagen")[0];
-    // var imgExistente = $("#imagenExistente")[0];
-    // var file = inputImagen.files[0];
-
-    // if (file) {
-    //     var reader = new FileReader();
-    //     reader.onload = function(e) {
-    //         $("#imagenExistente").attr("src", e.target.result);
-    //     };
-    //     reader.readAsDataURL(file);
-    // } else {
-    //     $("#imagenExistente").attr("src", 'img/Default.png');
-    // }
-    // $('#imagenExistente').show();
+    $('#imagenExistente').show();
 }
 
 function verificarCampo(idCampo, requerido){
