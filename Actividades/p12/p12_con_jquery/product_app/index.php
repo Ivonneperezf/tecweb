@@ -55,7 +55,7 @@
                             <option value="Under Armour"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Under Armour') ? 'selected' : '' ?>>Under Armour</option>
                             <option value="Zara"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Zara') ? 'selected' : '' ?>>Zara</option>
                             <option value="H&M"<?= (isset($_POST['marca']) && $_POST['marca'] === 'H&M') ? 'selected' : '' ?>>H&M</option>
-                            <option value="Levi's"<?= (isset($_POST['marca']) && $_POST['marca'] === "Levi's") ? 'selected' : '' ?>>Levi's</option>
+                            <option value="Levis"<?= (isset($_POST['marca']) && $_POST['marca'] === "Levi's") ? 'selected' : '' ?>>Levi's</option>
                             <option value="Calvin Klein"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Calvin Klein') ? 'selected' : '' ?>>Calvin Klein</option>
                             <option value="Tommy Hilfiger"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Tommy Hilfiger') ? 'selected' : '' ?>>Tommy Hilfiger</option>
                             <option value="Gucci"<?= (isset($_POST['marca']) && $_POST['marca'] === 'Gucci') ? 'selected' : '' ?>>Gucci</option>
