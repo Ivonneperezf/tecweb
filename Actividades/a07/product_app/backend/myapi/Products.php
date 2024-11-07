@@ -1,25 +1,25 @@
 <?php
-namespace conexion\DataBases;
+namespace TECWEB\MYAPI;
 require_once 'DataBase.php';
 class Products extends DataBase{
-    private $response = [];
+    private $data = [];
 
-    public function __construct($user = 'localhost', $pass  = 'Mivida243@.' ,$db = 'marketzone') {
-        $this->response = [];
-        parent::__construct($user, $pass ,$db);
+    public function __construct($db='marketzone', $user = 'root', $pass  = 'Mivida243@.') {
+        $this->data = [];
+        parent::__construct($db, $user ,$pass);
     }
 
     public function singleByName($name) {
         $query = "SELECT * FROM products WHERE name = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$name]);
-        $this->response = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $this->data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
     public function add($producto) {
         // Inicializar la respuesta predeterminada
-        $data = array(
+        $response = array(
             'status' => 'error',
             'message' => 'Ya existe un producto con ese nombre'
         );
@@ -35,36 +35,36 @@ class Products extends DataBase{
                     '{$producto['detalles']}', {$producto['unidades']}, '{$producto['imagen']}', 0)";
             
             if ($this->conexion->query($sql)) {
-                $data['status'] = "success";
-                $data['message'] = "Producto agregado";
+                $response['status'] = "success";
+                $response['message'] = "Producto agregado";
             } else {
-                $data['message'] = "ERROR: No se ejecutó $sql. " . mysqli_error($this->conexion);
+                $response['message'] = "ERROR: No se ejecutó $sql. " . mysqli_error($this->conexion);
             }
         }
         $result->free();
         $this->conexion->close();
-        $this->response = $data;
+        $this->data = $response;
     }
 
 
     public function delete($id) {
-        $data = array(
+        $response = array(
             'status' => 'error',
             'message' => 'Producto no encontrado'
         );
         $sql = "UPDATE productos SET eliminado = 1 WHERE id = {$id}";
         if ($this->conexion->query($sql)) {
-            $data['status'] = 'success';
-            $data['message'] = 'Producto eliminado';
+            $response['status'] = 'success';
+            $response['message'] = 'Producto eliminado';
         } else {
-            $data['message'] = 'ERROR: No se ejecutó ' . $sql . '. ' . mysqli_error($this->conexion);
+            $response['message'] = 'ERROR: No se ejecutó ' . $sql . '. ' . mysqli_error($this->conexion);
         }
-        $this->response = $data;
+        $this->data = $response;
         $this->conexion->close();
     }
 
     public function edit($jsonOBJ) {
-        $data = array(
+        $response = array(
             'status' => 'error',
             'message' => 'Datos incompletos o inválidos'
         );
@@ -94,24 +94,24 @@ class Products extends DataBase{
                         WHERE id = {$id}";
 
                     if ($this->conexion->query($sql) === TRUE) {
-                        $data['status'] = "success";
-                        $data['message'] = "Producto editado exitosamente";
+                        $response['status'] = "success";
+                        $response['message'] = "Producto editado exitosamente";
                     } else {
-                        $data['message'] = "ERROR: No se ejecutó $sql. " . mysqli_error($this->conexion);
+                        $response['message'] = "ERROR: No se ejecutó $sql. " . mysqli_error($this->conexion);
                     }
                 } else {
-                    $data['message'] = "Ya existe un producto con ese nombre";
+                    $response['message'] = "Ya existe un producto con ese nombre";
                 }
 
                 $result->free();
             }
         }
         // Responder con el estado de la operación
-        $this->response = $data;
+        $this->data = $response;
     }
 
     public function list() {
-        $data = array();
+        $response = array();
         if ($result = $this->conexion->query("SELECT * FROM productos WHERE eliminado = 0")) {
             // Obtener los resultados
             $rows = $result->fetch_all(MYSQLI_ASSOC);
@@ -119,7 +119,7 @@ class Products extends DataBase{
                 // Mapear los resultados al arreglo de respuesta
                 foreach ($rows as $num => $row) {
                     foreach ($row as $key => $value) {
-                        $data[$num][$key] = $value;
+                        $response[$num][$key] = $value;
                     }
                 }
             }
@@ -127,12 +127,12 @@ class Products extends DataBase{
         } else {
             die('Query Error: ' . mysqli_error($this->conexion));
         }
-        $this->response = $data;
+        $this->data = $response;
     }
 
 
     public function search($search) {
-        $data = array();
+        $response = array();
         $sql = "SELECT * FROM productos WHERE (id = '{$search}' OR nombre LIKE '%{$search}%' OR marca LIKE '%{$search}%' OR detalles LIKE '%{$search}%') AND eliminado = 0";
         
         if ($result = $this->conexion->query($sql)) {
@@ -140,7 +140,7 @@ class Products extends DataBase{
             if (!is_null($rows)) {
                 foreach ($rows as $num => $row) {
                     foreach ($row as $key => $value) {
-                        $data[$num][$key] = utf8_encode($value);
+                        $response[$num][$key] = utf8_encode($value);
                     }
                 }
             }
@@ -149,12 +149,12 @@ class Products extends DataBase{
             die('Query Error: ' . mysqli_error($this->conexion));
         }
         // Asignar los resultados a la propiedad de respuesta
-        $this->response = $data;
+        $this->data = $response;
     }
 
 
     public function single($id) {
-        $data = array();
+        $response = array();
 
         // Evitar inyección de SQL con parámetros preparados
         $query = "SELECT * FROM productos WHERE id = ?";
@@ -166,7 +166,7 @@ class Products extends DataBase{
         if ($result) {
             // Obtener los resultados y mapearlos al arreglo de respuesta
             if ($row = $result->fetch_assoc()) {
-                $data = array(
+                $response = array(
                     'id' => $row['id'],
                     'nombre' => $row['nombre'],
                     'marca' => $row['marca'],
@@ -183,11 +183,11 @@ class Products extends DataBase{
         }
 
         // Asignar los resultados a la propiedad de respuesta
-        $this->response = $data;
+        $this->data = $response;
     }
 
     public function getByName($nombre) {
-        $data = array();
+        $response = array();
         $query = "SELECT * FROM productos WHERE nombre = ?";
         $stmt = $this->conexion->prepare($query);
         $stmt->bind_param('s', $nombre);  
@@ -195,7 +195,7 @@ class Products extends DataBase{
         $result = $stmt->get_result();
         if ($result) {
             if ($row = $result->fetch_assoc()) {
-                $data = array(
+                $response = array(
                     'id' => $row['id'],
                     'nombre' => $row['nombre'],
                     'marca' => $row['marca'],
@@ -210,11 +210,11 @@ class Products extends DataBase{
         } else {
             die('Query fallida');
         }
-        $this->response = $data;
+        $this->data = $response;
     }
 
     public function getData() {
-        return json_encode($this->response); 
+        return json_encode($this->data); 
     }
 }
 ?>
