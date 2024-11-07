@@ -140,7 +140,6 @@ function agregarProducto() {
             contentType: 'application/json',
             data: JSON.stringify(postData),
             success: function(response) {
-                alert(response);
                 let result = typeof response === 'string' ? JSON.parse(response) : response;
                 if (result.status === "success") {
                     listarProductos();
@@ -260,11 +259,10 @@ function editarProducto() {
                 $('#imagenExistente').attr('src', productData.imagen);
                 $('#productId').val(productData.id);
                 $('#imagenExistente').show();
-
                 let result  = typeof response === 'string' ? JSON.parse(response) : response;
-                $('#container').append("Status: " + result.status + "<br>");
-                $('#container').append("Message: " + result.message + "<br>");
-                $('#product-result').show();
+                // $('#container').append("Status: " + result.status + "<br>");
+                // $('#container').append("Message: " + result.message + "<br>");
+                // $('#product-result').show();
             }
         });
     });

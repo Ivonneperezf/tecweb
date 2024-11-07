@@ -134,7 +134,7 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
     <!-- Lógica del Frontend -->
-    <script src="js/app.js"></script>
+    <script src="js/appWeb.js"></script>
     <script src="js/verificarValores.js"></script>
   </body>
 
