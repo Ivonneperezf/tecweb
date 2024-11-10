@@ -13,7 +13,7 @@ if (!empty($data['nombre'])) {
     $nombre = $data['nombre'];
 
     // Verificar si el nombre ya existe en la base de datos usando LIKE
-    $sql = "SELECT * FROM productos WHERE nombre LIKE '{$nombre}%' AND eliminado = 0";
+    $sql = "SELECT * FROM productos WHERE nombre LIKE '{$nombre}' AND eliminado = 0";
     $result = $conexion->query($sql);
 
     if ($result->num_rows > 0) {

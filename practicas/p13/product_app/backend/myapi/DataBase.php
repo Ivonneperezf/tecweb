@@ -5,6 +5,7 @@ namespace TECWEB\MYAPI;
         protected $data;
 
         public function __construct($db, $user = 'root',$pass = 'Mivida243@.') {
+            $this->data = array();
             $this->conexion = @mysqli_connect(
                 'localhost',
                 $user,

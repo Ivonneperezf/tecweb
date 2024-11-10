@@ -81,5 +81,32 @@ require_once __DIR__ . '/../DataBase.php';
             // Asignar los resultados a la propiedad de respuesta
             $this->data = $response;
         }
+
+        public function getByName($nombre) {
+            $response = array();
+            $query = "SELECT * FROM productos WHERE nombre = ?";
+            $stmt = $this->conexion->prepare($query);
+            $stmt->bind_param('s', $nombre);  
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result) {
+                if ($row = $result->fetch_assoc()) {
+                    $response = array(
+                        'id' => $row['id'],
+                        'nombre' => $row['nombre'],
+                        'marca' => $row['marca'],
+                        'modelo' => $row['modelo'],
+                        'precio' => $row['precio'],
+                        'detalles' => $row['detalles'],
+                        'unidades' => $row['unidades'],
+                        'imagen' => $row['imagen']
+                    );
+                }
+                $result->free();
+            } else {
+                die('Query fallida');
+            }
+            $this->data = $response;
+        }
     }
 ?>
