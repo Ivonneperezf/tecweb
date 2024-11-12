@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CatalogoVOD>
+    <cuenta>
+        <correo>correoAna@gmail.com.com</correo>
+        <perfiles>
+            <perfil>
+                <usuario>Susana</usuario>
+                <idioma>espanol</idioma>
+            </perfil>
+            <perfil>
+                <usuario>Eduardo</usuario>
+                <idioma>ingles</idioma>
+            </perfil>
+        </perfiles>
+    </cuenta>
+
+    <contenido>
+        <peliculas>
+            <genero> 
+                <nombre>Acción</nombre>
+                <titulo>
+                    <nombre>Mad Max: Fury Road</nombre>
+                    <duracion>120</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>John Wick </nombre>
+                    <duracion>101</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Gladiator</nombre>
+                    <duracion>155</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>The Dark Knight</nombre>
+                    <duracion>152</duracion>
+                </titulo>
+            </genero>
+
+            <genero>
+                <nombre>Comedia</nombre>
+                <titulo>
+                    <nombre>Superbad</nombre>
+                    <duracion>113</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>The Hangover</nombre>
+                    <duracion>100</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Step Brothers</nombre>
+                    <duracion>98</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Mean Girls</nombre>
+                    <duracion>97</duracion>
+                </titulo>
+            </genero>
+        </peliculas>
+
+        <programas>
+
+            <genero>
+                <nombre>Drama</nombre>
+                <titulo>
+                    <nombre>Breaking Bad</nombre>
+                    <duracion>47</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Game of Thrones</nombre>
+                    <duracion>57</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>The Crown</nombre>
+                    <duracion>60</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>The Handmaids Tale</nombre>
+                    <duracion>55</duracion>
+                </titulo>
+            </genero>
+
+
+            <genero>
+                <nombre>Terror</nombre>
+                <titulo>
+                    <nombre>Stranger Things</nombre>
+                    <duracion>50</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>The Haunting of Hill House</nombre>
+                    <duracion>60</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>American Horror Story </nombre>
+                    <duracion>40</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Penny Dreadful</nombre>
+                    <duracion>60</duracion>
+                </titulo>
+            </genero>
+        </programas>
+    </contenido>
+
+</CatalogoVOD>
