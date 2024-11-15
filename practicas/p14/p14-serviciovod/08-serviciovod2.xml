@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CatalogoVOD>
+    <cuenta correo="correoAna@gmail.com.com">
+        <perfiles>
+            <perfil usuario="Susana" idioma="espanol"/>
+            <perfil usuario="Eduardo" idioma="ingles"/>
+        </perfiles>
+    </cuenta>
+
+    <contenido>
+        <peliculas>
+            <genero nombre="Acción">
+                <titulo duracion="120">Mad Max: Fury Road</titulo>
+                <titulo duracion="101">John Wick</titulo>
+                <titulo duracion="155">Gladiator</titulo>
+                <titulo duracion="152">The Dark Knight</titulo>
+            </genero>
+
+            <genero nombre="Comedia">
+                <titulo duracion="113">Superbad</titulo>
+                <titulo duracion="100">The Hangover</titulo>
+                <titulo duracion="98">Step Brothers</titulo>
+                <titulo duracion="97">Mean Girls</titulo>
+            </genero>
+        </peliculas>
+
+        <programas>
+            <genero nombre="Drama">
+                <titulo nombre="Breaking Bad" duracion="47"/>
+                <titulo nombre="Game of Thrones" duracion="57"/>
+                <titulo nombre="The Crown" duracion="60"/>
+                <titulo nombre="The Handmaids Tale" duracion="55"/>
+            </genero>
+
+            <genero nombre="Terror">
+                <titulo nombre="Stranger Things" duracion="50"/>
+                <titulo nombre="The Haunting of Hill House" duracion="60"/>
+                <titulo nombre="American Horror Story" duracion="40"/>
+                <titulo nombre="Penny Dreadful" duracion="60"/>
+            </genero>
+        </programas>
+    </contenido>
+</CatalogoVOD>
