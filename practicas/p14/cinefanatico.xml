@@ -1,2 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cinefanatico SYSTEM "cinefanatico.dtd">
+<cinefanatico>
+    <tarjeta noserie="1426" visitas="DSB234B" puntos="8">
+        <nombre>Alison</nombre>
+        <correo>alison@correo.com</correo>
+        <telefono tipo="movil">2224638950</telefono>
+        <telefono tipo="casa">3544376510</telefono>
+    </tarjeta>
 
+    <tarjeta noserie="67890" visitas="200" puntos="800">
+        <nombre>Ana Gómez</nombre>
+        <correo>anagomez@correo.com</correo>
+        <telefono tipo="casa">555-8765</telefono>
+    </tarjeta>
+
+    <tarjeta noserie="11223" visitas="300" puntos="1200">
+        <nombre>Pedro López</nombre>
+        <correo>pedrolopez@correo.com</correo>
+    </tarjeta>
+</cinefanatico>
