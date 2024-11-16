@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-
-    <!-- Definición del tipo complejo cuentaType -->
-
-    <!-- Definición del tipo complejo spotifyType -->
-
-    <!-- Elemento raíz que utiliza spotifyType -->
     <xs:complexType name="cuentaType">
         <xs:sequence>
             <xs:element name="Nombre" type="xs:string"/>
             <xs:element name="Correo" type="xs:string"/>
-            <xs:element minOccurs="0" name="Telefono" type="xs:string"/>
+            <xs:element minOccurs="0" name="Telefono">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="tipo" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
         <xs:attribute name="id" type="xs:string"/>
         <xs:attribute name="plan" type="xs:string"/>
