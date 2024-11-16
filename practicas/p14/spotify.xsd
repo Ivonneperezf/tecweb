@@ -13,20 +13,21 @@
                                 <xs:complexType>
                                     <xs:simpleContent>
                                         <xs:extension base="xs:string">
-                                            <xs:attribute name="tipo" use="required"/>
+                                            <xs:attribute name="tipo" use="required"
+                                                type="xs:string"/>
                                         </xs:extension>
                                     </xs:simpleContent>
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
-                        <xs:attribute name="id" use="required"/>
-                        <xs:attribute name="plan" use="required"/>
-                        <xs:attribute name="fechaIni"/>
-                        <xs:attribute name="fechaFin"/>
+                        <xs:attribute name="id" use="required" type="xs:string"/>
+                        <xs:attribute name="plan" use="required" type="xs:string"/>
+                        <xs:attribute name="fechaIni" type="xs:string"/>
+                        <xs:attribute name="fechaFin" type="xs:string"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
-            <xs:attribute name="version" use="required"/>
+            <xs:attribute name="version" use="required" type="xs:string"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>
