@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CatalogoVOD SYSTEM "serviciovod.dtd">
 <CatalogoVOD>
     <cuenta correo="correoAna@gmail.com.com">
         <perfiles>
@@ -26,17 +27,17 @@
 
         <programas>
             <genero nombre="Drama">
-                <titulo nombre="Breaking Bad" duracion="47"/>
-                <titulo nombre="Game of Thrones" duracion="57"/>
-                <titulo nombre="The Crown" duracion="60"/>
-                <titulo nombre="The Handmaids Tale" duracion="55"/>
+                <titulo duracion="47">Breaking Bad</titulo>
+                <titulo duracion="57">Game of Thrones</titulo>
+                <titulo duracion="60">The Crown</titulo>
+                <titulo duracion="55">The Handmaids Tale</titulo>
             </genero>
 
             <genero nombre="Terror">
-                <titulo nombre="Stranger Things" duracion="50"/>
-                <titulo nombre="The Haunting of Hill House" duracion="60"/>
-                <titulo nombre="American Horror Story" duracion="40"/>
-                <titulo nombre="Penny Dreadful" duracion="60"/>
+                <titulo duracion="50">Stranger Things</titulo>
+                <titulo duracion="60">The Haunting of Hill House</titulo>
+                <titulo duracion="40">American Horror Story</titulo>
+                <titulo duracion="60">Penny Dreadful</titulo>
             </genero>
         </programas>
     </contenido>
